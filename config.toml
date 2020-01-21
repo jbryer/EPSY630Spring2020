@@ -51,7 +51,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "slides/", "dat
 
 [[menu.main]]
     name = "Github"
-    url = "https://github.com/jbryer/EPSY630-Spring2020"
+    url = "https://github.com/jbryer/EPSY630Spring2020"
     weight = 10
     
 [[menu.main]]
