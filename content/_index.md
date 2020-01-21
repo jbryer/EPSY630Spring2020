@@ -34,15 +34,14 @@ One graduate level statistics course (EPSY 530 or equivalent).
 
 #### Assignments
 
-* **Labs**
+* **Labs** (40%)
 	* Introduction to R and RStudio - Due February 10th
 	* Introduction to Linear Regression - Due February 24th
 	* Multiple Linear Regression - Due March 2nd
 	* ANOVA - Due April 6th
-* **Homework**
-	* 
-* **Presentation** - The culmination of the course will be a short (10 to 15 minutes) presentation and document outlining the analysis you conducted.
-* **Final Exam**
+* **Homework** (20%)
+* **Presentation** (20%) - The culmination of the course will be a short (10 to 15 minutes) presentation and document outlining the analysis you conducted.
+* **Final Exam** (20%)
 
 #### Grade Distribution
 
