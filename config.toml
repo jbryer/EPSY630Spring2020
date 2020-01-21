@@ -1,0 +1,65 @@
+baseURL = "https://epsy630.bryer.org"
+
+publishDir = "docs/"
+
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+title = "Statistics II"
+theme = "hugo-theme-techdoc"
+
+hasCJKLanguage = true
+metaDataFormat = "yaml"
+
+pygmentsUseClasses = true
+pygmentsCodefences = true
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir= false
+enableMissingTranslationPlaceholders = false
+
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "slides/", "datasets/", "articles/", "private"]
+
+[Params]
+
+    # Souce Code repository section
+    description = "University at Albany - EPSY 630 - Spring 2020"
+    github_repository = "https://github.com/jbryer/EPSY630-Spring2020"
+    version = ""
+
+    # Documentation repository section
+    # documentation repository (set edit link to documentation repository)
+    github_doc_repository = "https://github.com/jbryer/EPSY630-Spring2020"
+
+    # Analytic section
+    google_analytics_id = "" # Your Google Analytics tracking id
+    tag_manager_container_id = "" # Your Google Tag Manager container id
+    google_site_verification = "" # Your Google Site Verification
+
+    # Theme settings section
+    dateformat = "January 2, 2006" # default "2 Jan 2006"
+    # See the format reference https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+
+    # path name excluded from documentation menu
+    menu_exclusion = ["archives", "blog", "entry", "post", "posts"]
+
+
+# Global menu section
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Github"
+    url = "https://github.com/jbryer/EPSY630-Spring2020"
+    weight = 10
+    
+[[menu.main]]
+    name = "Slack"
+    url = "https://epsy630spring2020.slack.com"
+    weight = 20
+    
+# [[menu.main]]
+#    name = "Twitter"
+#    url = "https://twitter.com/jbryer"
+#    weight = 2

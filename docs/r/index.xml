@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Programming on Statistics II</title>
+    <link>/r/</link>
+    <description>Recent content in R Programming on Statistics II</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Intro to R and RStudio</title>
+      <link>/r/intror/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/intror/</guid>
+      <description> Assignment Complete Lab0 from the DATA606 R package. The following commands will copy the lab template to your current working directory. Read the markdown file answering the questions within the document.
+DATA606::startLab(&#39;Lab1&#39;)  Readings  The preface and introduction of R for Data Science book. History and Overview of R chapter from R Programming for Data Science book by Roger Peng. Thieme, N. (2018). R generation. Significance, 15(4), 14-19.  </description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling</title>
+      <link>/r/data_wrangling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/data_wrangling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualization</title>
+      <link>/r/data_visualization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/data_visualization/</guid>
+      <description> Readings  Chapter 1 of R for Data Science book. Gelman, A., Pasarica, C., &amp;amp; Dodhia, R. (2002). Let&amp;rsquo;s practice what we preach: Turning tables into graphcs. The American Statistician, 56(2), 121-130.  </description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>/r/programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Communicating</title>
+      <link>/r/communicating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/communicating/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shiny</title>
+      <link>/r/shiny/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Packages</title>
+      <link>/r/packages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/r/packages/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
