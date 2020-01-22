@@ -8,7 +8,7 @@ weight: 1
 ---
 
 
-### Homework 1 - DAACS
+## Homework 1 - DAACS
 
 **Due January 27th**
 

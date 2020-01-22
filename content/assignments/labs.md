@@ -7,9 +7,11 @@ draft: false
 weight: 2
 ---
 
-### Lab 1 - [Intro to R and RStudio](https://htmlpreview.github.io/?https://github.com/jbryer/EPSY630Spring2020/blob/master/Labs/Lab1/intro_to_r.html)
+## Lab 1 - [Intro to R and RStudio](https://htmlpreview.github.io/?https://github.com/jbryer/EPSY630Spring2020/blob/master/Labs/Lab1/intro_to_r.html)
 
 **Due February 3rd**
 
 [Click here](https://github.com/jbryer/EPSY630Spring2020/raw/master/Labs/Lab1.zip) to download the lab files. Once downloaded, open the `intro_to_r.Rmd` file, read, and complete the questions throughout the document.
+
+[Click here to submit](https://forms.gle/TsMZ67MxUCtvhopd9)
 
