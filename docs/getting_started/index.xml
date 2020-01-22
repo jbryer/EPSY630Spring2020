@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting Started on Statistics II</title>
-    <link>/getting_started/</link>
+    <link>https://epsy630.bryer.org/getting_started/</link>
     <description>Recent content in Getting Started on Statistics II</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Oct 2017 15:26:15 +0000</lastBuildDate>
     
-	<atom:link href="/getting_started/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://epsy630.bryer.org/getting_started/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Software</title>
-      <link>/getting_started/software/</link>
+      <link>https://epsy630.bryer.org/getting_started/software/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>/getting_started/software/</guid>
+      <guid>https://epsy630.bryer.org/getting_started/software/</guid>
       <description>R and RStudio  R - Windows or Mac RStudio - Download Windows or Mac version from here  If using Windows, you also need to download and install these:
  RTools ActivePerl  R Packages Once R is installed, install the following R packages.
 install.packages(c(&#39;devtools&#39;, &#39;tidyverse&#39;, &#39;psych&#39;, &#39;reshape2&#39;, &#39;blogdown&#39;, &#39;bookdown&#39;, &#39;shiny&#39;, &#39;markdown&#39;, &#39;knitr&#39;, &#39;foreign&#39;, &#39;openintro&#39;, &#39;OIdata&#39;, &#39;fivethirdyeight&#39;)) devtools::install_github(&#39;jbryer/likert&#39;) devtools::install_github(&amp;quot;jbryer/DATA606&amp;quot;)  LaTeX LaTeX is a typesetting language for preparing documents.</description>
@@ -24,20 +24,20 @@ install.packages(c(&#39;devtools&#39;, &#39;tidyverse&#39;, &#39;psych&#39;, &#3
     
     <item>
       <title>Data</title>
-      <link>/getting_started/data/</link>
+      <link>https://epsy630.bryer.org/getting_started/data/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>/getting_started/data/</guid>
+      <guid>https://epsy630.bryer.org/getting_started/data/</guid>
       <description>Programme of International Student Assessment Click here to go to the download page for the 2015 PISA results. Results from 2012, 2009, 2006, 2003, and 2000 are also available. Download the SPSS version of the files. You will also want to download the codebook files.
 FiveThirtyEight FiveThirtyEight makes a lot of their datasets freely available. There is also an R package that has some of those datasets preformatted for R.</description>
     </item>
     
     <item>
       <title>Resources</title>
-      <link>/getting_started/resources/</link>
+      <link>https://epsy630.bryer.org/getting_started/resources/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>/getting_started/resources/</guid>
+      <guid>https://epsy630.bryer.org/getting_started/resources/</guid>
       <description>Books Wickham, H., &amp;amp; Grolemund, G. (2016) R for Data Science. O&amp;rsquo;Reilly.
  Most of this books is available freely online at r4ds.had.co.nz/ but can be purchased from Amazon.
  Wickham, H. (2014) Advanced R. Baca Raton, FL: Taylor &amp;amp; Francis Group.
@@ -47,10 +47,10 @@ FiveThirtyEight FiveThirtyEight makes a lot of their datasets freely available. 
     
     <item>
       <title>Math Equations</title>
-      <link>/getting_started/mathjax/</link>
+      <link>https://epsy630.bryer.org/getting_started/mathjax/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/getting_started/mathjax/</guid>
+      <guid>https://epsy630.bryer.org/getting_started/mathjax/</guid>
       <description>Occasionally you will need to type equations in homework and labs. R Markdown supports LaTeX style equations using the MathJax javascript library. I do not expect you to learn LaTeX for this course. Instead, I recommend using the free application Daum Equation Editor. It availabe online, as a Google Chrome Extension, or as a standalone Mac Application.
 Creating Equations with Daum Equation Editor Occasionally you will need to type equations in homework and labs.</description>
     </item>
