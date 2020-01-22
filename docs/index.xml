@@ -12,11 +12,38 @@
     
     
     <item>
+      <title>Homework</title>
+      <link>/assignments/homework/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>/assignments/homework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Linear Regression</title>
       <link>/topics/linear_regression/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>/topics/linear_regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Labs</title>
+      <link>/assignments/labs/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>/assignments/labs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Presentation</title>
+      <link>/assignments/presentation/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>/assignments/presentation/</guid>
       <description></description>
     </item>
     

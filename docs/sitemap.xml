@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/assignments/homework/</loc>
+    <lastmod>2018-12-08T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/topics/linear_regression/</loc>
+    <lastmod>2018-12-08T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/assignments/labs/</loc>
+    <lastmod>2018-12-08T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/assignments/presentation/</loc>
     <lastmod>2018-12-08T15:26:15+00:00</lastmod>
   </url>
   
@@ -24,6 +39,11 @@
   
   <url>
     <loc>/getting_started/resources/</loc>
+    <lastmod>2018-12-08T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/assignments/</loc>
     <lastmod>2018-12-08T15:26:15+00:00</lastmod>
   </url>
   
