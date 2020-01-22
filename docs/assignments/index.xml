@@ -1,44 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Assignments on Statistics II</title>
-    <link>https://epsy630.bryer.org/assignments/</link>
-    <description>Recent content in Assignments on Statistics II</description>
+    <title>Assignments on EPSY 630 - Statistics II</title>
+    <link>/assignments/</link>
+    <description>Recent content in Assignments on EPSY 630 - Statistics II</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Oct 2017 15:26:15 +0000</lastBuildDate>
     
-	<atom:link href="https://epsy630.bryer.org/assignments/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/assignments/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Homework</title>
-      <link>https://epsy630.bryer.org/assignments/homework/</link>
+      <link>/assignments/homework/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://epsy630.bryer.org/assignments/homework/</guid>
+      <guid>/assignments/homework/</guid>
       <description>Homework 1 - DAACS Due January 27th
-Go to demo.daacs.net, create an account, and complete the self-regulated learning and mathematics assessments. When done, enter your name and email address used to create an account on the DAACS website below. This is an ungraded assignment (i.e. you get credit for completing the assessments, not for the results).
-Click here to submit</description>
+Go to demo.daacs.net, create an account, and complete the self-regulated learning and mathematics assessments. When done, enter your name and email address used to create an account on the DAACS website below. This is an ungraded assignment (i.e. you get credit for completing the assessments, not for the results). Click here to submit</description>
     </item>
     
     <item>
       <title>Labs</title>
-      <link>https://epsy630.bryer.org/assignments/labs/</link>
+      <link>/assignments/labs/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://epsy630.bryer.org/assignments/labs/</guid>
+      <guid>/assignments/labs/</guid>
       <description>Lab 1 - Intro to R and RStudio Due February 3rd
-Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd file, read, and complete the questions throughout the document.
-Click here to submit</description>
+Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd file, read, and complete the questions throughout the document. Click here to submit lab 1.</description>
     </item>
     
     <item>
       <title>Presentation</title>
-      <link>https://epsy630.bryer.org/assignments/presentation/</link>
+      <link>/assignments/presentation/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://epsy630.bryer.org/assignments/presentation/</guid>
+      <guid>/assignments/presentation/</guid>
       <description>TBD</description>
     </item>
     

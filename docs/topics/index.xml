@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Topics on Statistics II</title>
-    <link>https://epsy630.bryer.org/topics/</link>
-    <description>Recent content in Topics on Statistics II</description>
+    <title>Topics on EPSY 630 - Statistics II</title>
+    <link>/topics/</link>
+    <description>Recent content in Topics on EPSY 630 - Statistics II</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Oct 2017 15:26:15 +0000</lastBuildDate>
     
-	<atom:link href="https://epsy630.bryer.org/topics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/topics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linear Regression</title>
-      <link>https://epsy630.bryer.org/topics/linear_regression/</link>
+      <link>/topics/linear_regression/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://epsy630.bryer.org/topics/linear_regression/</guid>
+      <guid>/topics/linear_regression/</guid>
       <description></description>
     </item>
     

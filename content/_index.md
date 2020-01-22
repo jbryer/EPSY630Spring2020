@@ -4,7 +4,7 @@ lastmod: 2018-12-08T15:26:15Z
 publishdate: 2018-11-23T15:26:15Z
 ---
 
-## EPSY 887: Intro to R for Academic Researchers
+## EPSY 630: Statistics II
 
 ***Instructor:***		Jason Bryer, Ph.D. (jbryer@albany.edu)   
 ***Class Time:*** 		Mondays 4:15 p.m. - 7:05  p.m.  
@@ -51,9 +51,9 @@ A = 93+; A- = 90-92; B+ = 87-89; B = 84-86; B- = 80-83; C+ = 75-79; C = 70-74; D
 
 #### Required
 
-Diez, D.M., Barr, C.D., & Çetinkaya-Rundel, M. (2015). OpenIntro Statistics (3rd Ed).
+Diez, D.M., Barr, C.D., & Çetinkaya-Rundel, M. (2019). OpenIntro Statistics (4th Ed).
 
-> This is an open source textbook and can be downloaded in PDF format [here](https://github.com/jbryer/DATA606Spring2018/blob/master/Textbook/os3.pdf?raw=true), from the [OpenIntro](http://www.openintro.org/stat/textbook.php) website, or a printed copy can be ordered from [Amazon](https://www.openintro.org/redirect.php?go=amazon_os3&referrer=/stat/textbook.php).
+> This is an open source textbook and can be downloaded in PDF format [here](https://github.com/jbryer/EPSY630Spring2020/raw/master/Textbook/os4.pdf), from the [OpenIntro](http://www.openintro.org/stat/textbook.php) website, or a printed copy can be ordered from [Amazon](https://www.openintro.org/redirect.php?go=amazon_os3&referrer=/stat/textbook.php).
 
 #### Recommended
 
@@ -63,8 +63,8 @@ Wickham, H., & Grolemund, G. (2016) *R for Data Science*. O'Reilly.
 
 #### Other Documents
 
-* [Probability Tables](https://github.com/jbryer/DATA606Spring2018/blob/master/Textbook/os2_prob_tables.pdf?raw=true)
-* [Inference Guide](https://github.com/jbryer/DATA606Spring2018/blob/master/Textbook/os2_extra_inference_guide.pdf?raw=true)
+* [Probability Tables](https://github.com/jbryer/EPSY630Spring2020/raw/master/Textbook/os2_prob_tables.pdf)
+* [Inference Guide](https://github.com/jbryer/EPSY630Spring2020/raw/master/Textbook/os2_extra_inference_guide.pdf)
 * [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 * [Probability Cheat Sheet](http://static1.squarespace.com/static/54bf3241e4b0f0d81bf7ff36/t/55e9494fe4b011aed10e48e5/1441352015658/probability_cheatsheet.pdf)
 
