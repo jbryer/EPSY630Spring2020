@@ -1,10 +1,10 @@
-baseURL = "https://epsy630.bryer.org"
+baseURL = "/"
 
 publishDir = "docs/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "Statistics II"
+title = "EPSY 630 - Statistics II"
 theme = "hugo-theme-techdoc"
 
 hasCJKLanguage = true
@@ -23,12 +23,12 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "slides/", "dat
 
     # Souce Code repository section
     description = "University at Albany - EPSY 630 - Spring 2020"
-    github_repository = "https://github.com/jbryer/EPSY630-Spring2020"
+    github_repository = "https://github.com/jbryer/EPSY630Spring2020"
     version = ""
 
     # Documentation repository section
     # documentation repository (set edit link to documentation repository)
-    github_doc_repository = "https://github.com/jbryer/EPSY630-Spring2020"
+    github_doc_repository = "https://github.com/jbryer/EPSY630Spring2020"
 
     # Analytic section
     google_analytics_id = "" # Your Google Analytics tracking id
@@ -51,7 +51,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "slides/", "dat
 
 [[menu.main]]
     name = "Github"
-    url = "https://github.com/jbryer/EPSY630Spring2020 "
+    url = "https://github.com/jbryer/EPSY630Spring2020"
     weight = 10
     
 [[menu.main]]
