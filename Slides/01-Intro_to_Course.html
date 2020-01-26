@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Statistics II</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jason Bryer, Ph.D." />
+    <meta name="date" content="2020-01-27" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Statistics II
+## EPSY 630 - Spring 2020
+### Jason Bryer, Ph.D.
+### University at Albany
+### January 27, 2020
+
+---
+
+
+# Agenda
+
+* Introductions
+* Survey
+* Syllabus
+	* Course schedule
+	* Assignments
+* Intro to R and RStudio
+
+---
+
+
+# Introduction
+
+A little about me:
+
+* Principal Investigator for a Department of Education Grant (part of their FIPSE First in the World program) to develop a Diagnostic Assessment and Achievement of College Skills ([www.DAACS.net](http://www.daacs.net))  at [Excelsior College](http://excelsior.edu)
+* Research Data Associate at Cornell University
+* Adjunct Associate Professor at CUNY in the Master's of Data Science program
+* Authored over a dozen R packages including:
+	* [likert](http://github.com/jbryer/likert)
+	* [sqlutils](http://github.com/jbryer/sqlutils)
+	* [timeline](http://github.com/jbryer/timeline)
+* Specialize in propensity score methods. Three new methods/R packages developed include:
+	* [multilevelPSA](http://github.com/jbryer/multilevelPSA)
+	* [TriMatch](http://github.com/jbryer/TriMatch)
+	* [PSAboot](http://github.com/jbryer/PSAboot)
+
+---
+
+# Also a Father...
+
+&lt;center&gt;&lt;img src='images/BoysFall2019.jpg' height='500'&gt;&lt;/center&gt;
+
+---
+
+# Runner...
+
+&lt;center&gt;&lt;img src='images/2020Dopey.jpg' height='500'&gt;&lt;/center&gt;
+
+---
+
+# And photographer.
+
+&lt;center&gt;&lt;img src='images/Sleeping_Empire.jpg' height='500'&gt;&lt;/center&gt;
+
+---
+
+# Your turn
+
+* Name?
+* Program?
+* What statistics courses have you already taken?
+* What do you hope to get from this class?
+* What is something interesting about yourself we would otherwise not know?
+
+---
+
+# Survey
+
+Complete the paper survey.
+
+---
+
+# Syllabus
+
+Syllabus and course materials are here: [https://epsy630.bryer.org](https://epsy630.bryer.org)
+
+The site is built using the [Blogdown](https://bookdown.org/yihui/blogdown/) R package and hosted on [Github](https://github.com/jbryer/EPSY630Spring2020). Each page of the site has a "Improve this page" link at the bottom right, use that to start a pull request on Github.
+
+
+---
+
+# Course Schedule
+
+.small[
+
+
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Date &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Topic &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Jan 27 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Intro to the Course / Intro to R and Rstudio &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Feb 03 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Central Limit Theorem  -  Null hypothesis testing  -  Confidence Intervals &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Feb 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Correlation - Linear Regression &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Feb 17 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Multiple Regression &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Feb 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Multiple Regression (cont.) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Mar 02 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Maximum Likelihood estimation - Logistic Regression &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Mar 09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TBD &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Mar 16 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NO CLASS - Spring Break &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Mar 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ANOVA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Mar 30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ANCOVA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Apr 06 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chi-squared &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Apr 13 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bayesian Analysis &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Apr 20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Presentations &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, Apr 27 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Presentations &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mon, May 04 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Final Exam &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+---
+
+# Assignments
+
+
+* **Labs** (40%)
+	* Introduction to R and RStudio - Due February 10th
+	* Introduction to Linear Regression - Due February 24th
+	* Multiple Linear Regression - Due March 2nd
+	* ANOVA - Due April 6th
+* **Homework** (20%)
+	* Null hypothesis testing
+	* Regression
+	* Multiple &amp; Logistic Regression
+	* ANOVA
+	* Chi-Squared
+* **Presentation** (20%) - Present the results of a statistical analysis (using one of the methods discussed in this class) on a dataset of your choosing. Presentations should be approximately 10 minutes.
+* **Final Exam** (20%)
+
+
+---
+
+# Communication
+
+* Slack Channel: https://epsy630spring2020.slack.com/
+* Email: jbryer@albany.edu
+* Phone/GoToMeeting: Please email to schedule a time to meet.
+* In person - Email to schedule.
+
+---
+
+# The DATA606 R Package
+
+The package can be installed from Github using the `devtools` package.
+
+
+```r
+devtools::install_github('jbryer/DATA606')
+```
+
+Download the `Setup.R` script here: https://github.com/jbryer/EPSY887Fall2019/blob/master/R/Setup.R
+
+---
+
+# Class Structure
+
+Please bring your laptop with R and Rstudio installed. The classes will be structured like workshops where there will be a combination of lecture and activites. 
+
+In the second half of the class I would like to allocate class time to work on your projects you will be presented.
+
+---
+
+# First Lab / Assignment
+
+Install R and Rstudio.
+
+Run the setup script: 
+https://raw.githubusercontent.com/jbryer/EPSY887-Fall2019/master/R/Setup.R
+Complete Lab 1. Use the following commands to get started:
+
+
+```r
+DATA606::startLab('Lab1')
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

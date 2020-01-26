@@ -40,7 +40,7 @@ One graduate level statistics course (EPSY 530 or equivalent).
 	* Multiple Linear Regression - Due March 2nd
 	* ANOVA - Due April 6th
 * **Homework** (20%)
-* **Presentation** (20%) - The culmination of the course will be a short (10 to 15 minutes) presentation and document outlining the analysis you conducted.
+* **Presentation** (20%)
 * **Final Exam** (20%)
 
 #### Grade Distribution

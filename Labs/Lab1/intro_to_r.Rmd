@@ -1,11 +1,12 @@
 ---
 title: "Introduction to R and RStudio"
+author: ""
 output:
+  pdf_document: default
   html_document:
     css: ./lab.css
     highlight: pygments
     theme: cerulean
-  pdf_document: default
 ---
 
 The goal of this lab is to introduce you to R and RStudio, which you'll be using

@@ -8,6 +8,10 @@ blogdown::hugo_version()
 # https://github.com/thingsym/hugo-theme-techdoc
 # blogdown::new_site(theme = 'thingsym/hugo-theme-techdoc')
 
+# Copy the slides to the docs folder
+tocopy <- list.files('Slides/')
+file.copy(paste0('Slides/', tocopy), 'docs/slides', recursive = TRUE, overwrite = TRUE)
+
 blogdown::serve_site()
 blogdown::stop_server()
 

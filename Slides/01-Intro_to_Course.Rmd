@@ -1,0 +1,218 @@
+---
+title: "Statistics II"
+subtitle: "EPSY 630 - Spring 2020"
+author: "Jason Bryer, Ph.D."
+institute: "University at Albany"
+date: "January 27, 2020"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, my-theme.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Agenda
+
+* Introductions
+* Survey
+* Syllabus
+	* Course schedule
+	* Assignments
+* Intro to R and RStudio
+
+---
+
+
+# Introduction
+
+A little about me:
+
+* Principal Investigator for a Department of Education Grant (part of their FIPSE First in the World program) to develop a Diagnostic Assessment and Achievement of College Skills ([www.DAACS.net](http://www.daacs.net))  at [Excelsior College](http://excelsior.edu)
+* Research Data Associate at Cornell University
+* Adjunct Associate Professor at CUNY in the Master's of Data Science program
+* Authored over a dozen R packages including:
+	* [likert](http://github.com/jbryer/likert)
+	* [sqlutils](http://github.com/jbryer/sqlutils)
+	* [timeline](http://github.com/jbryer/timeline)
+* Specialize in propensity score methods. Three new methods/R packages developed include:
+	* [multilevelPSA](http://github.com/jbryer/multilevelPSA)
+	* [TriMatch](http://github.com/jbryer/TriMatch)
+	* [PSAboot](http://github.com/jbryer/PSAboot)
+
+---
+
+# Also a Father...
+
+<center><img src='images/BoysFall2019.jpg' height='500'></center>
+
+---
+
+# Runner...
+
+<center><img src='images/2020Dopey.jpg' height='500'></center>
+
+---
+
+# And photographer.
+
+<center><img src='images/Sleeping_Empire.jpg' height='500'></center>
+
+---
+
+# Your turn
+
+* Name?
+* Program?
+* What statistics courses have you already taken?
+* What do you hope to get from this class?
+* What is something interesting about yourself we would otherwise not know?
+
+---
+
+# Survey
+
+Complete the paper survey.
+
+---
+
+# Syllabus
+
+Syllabus and course materials are here: [https://epsy630.bryer.org](https://epsy630.bryer.org)
+
+The site is built using the [Blogdown](https://bookdown.org/yihui/blogdown/) R package and hosted on [Github](https://github.com/jbryer/EPSY630Spring2020). Each page of the site has a "Improve this page" link at the bottom right, use that to start a pull request on Github.
+
+
+---
+
+# Course Schedule
+
+.small[
+
+```{r schedule-setup, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggweekly)
+library(rlang) # Needed for the ggweekly.R script to work
+library(ggplot2)
+library(readxl)
+library(lubridate)
+
+options(knitr.kable.NA = '')
+
+semester <- 'Spring 2020'
+
+palette <- c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462',
+			 '#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f')
+
+
+lastModified <- format(file.info('../Schedule.xlsx')[1,]$mtime, '%B %d, %Y %I:%M%p')
+
+meetups <- read_excel('../Schedule.xlsx', sheet = 1)
+meetups$day <- as.Date(meetups$Date)
+meetups$label <- paste0(meetups$Time, '\n', meetups$Topic)
+# meetups$label <- meetups$Topic
+meetups$color <- '#000000'
+meetups$fill <- NA
+
+schedule <- meetups[,c('day', 'label', 'color', 'fill')]
+
+topics <- read_excel('../Schedule.xlsx', sheet = 2)
+topics$Start <- as.Date(topics$Start)
+topics$End <- as.Date(topics$End)
+for(i in 1:nrow(topics)) {
+	schedule <- rbind(schedule, data.frame(
+		day = topics[i,]$Start,
+		label = topics[i,]$Topic,
+		color = '#000000',
+		fill = palette[i]
+	))
+	dates <- seq(topics[i,]$Start, topics[i,]$End, by = 'day')[-1]
+	for(j in seq_along(dates)) {
+		schedule <- rbind(schedule, data.frame(
+			day = dates[j],
+			label = NA,
+			color = NA,
+			fill = palette[i]
+		))
+	}
+}
+
+
+start_day <- lubridate::floor_date(min(meetups$day), "month")
+end_day <- lubridate::ceiling_date(max(meetups$day), "month") - 1
+
+meetups$Date <- format(meetups$Date, '%a, %b %d')
+meetups$Topic <- gsub('<br/>', ' - ', meetups$Topic)
+```
+
+
+```{r schedule-table, echo=FALSE, results='asis'}
+knitr::kable(meetups[,c('Date','Topic')], format = 'html')
+```
+
+]
+
+---
+
+# Assignments
+
+
+* **Labs** (40%)
+	* Introduction to R and RStudio - Due February 10th
+	* Introduction to Linear Regression - Due February 24th
+	* Multiple Linear Regression - Due March 2nd
+	* ANOVA - Due April 6th
+* **Homework** (20%)
+	* Null hypothesis testing
+	* Regression
+	* Multiple & Logistic Regression
+	* ANOVA
+	* Chi-Squared
+* **Presentation** (20%) - Present the results of a statistical analysis (using one of the methods discussed in this class) on a dataset of your choosing. Presentations should be approximately 10 minutes.
+* **Final Exam** (20%)
+
+
+---
+
+# Communication
+
+* Slack Channel: https://epsy630spring2020.slack.com/
+* Email: jbryer@albany.edu
+* Phone/GoToMeeting: Please email to schedule a time to meet.
+* In person - Email to schedule.
+
+---
+
+# The DATA606 R Package
+
+The package can be installed from Github using the `devtools` package.
+
+```{r, eval=FALSE}
+devtools::install_github('jbryer/DATA606')
+```
+
+Download the `Setup.R` script here: https://github.com/jbryer/EPSY887Fall2019/blob/master/R/Setup.R
+
+---
+
+# Class Structure
+
+Please bring your laptop with R and Rstudio installed. The classes will be structured like workshops where there will be a combination of lecture and activites. 
+
+In the second half of the class I would like to allocate class time to work on your projects you will be presented.
+
+---
+
+# First Lab / Assignment
+
+Install R and Rstudio.
+
+Run the setup script: 
+https://raw.githubusercontent.com/jbryer/EPSY887-Fall2019/master/R/Setup.R
+Complete Lab 1. Use the following commands to get started:
+
+```{r, eval=FALSE}
+DATA606::startLab('Lab1')
+```
+
