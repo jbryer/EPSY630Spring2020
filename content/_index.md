@@ -55,6 +55,10 @@ Diez, D.M., Barr, C.D., & Çetinkaya-Rundel, M. (2019). OpenIntro Statistics (4t
 
 > This is an open source textbook and can be downloaded in PDF format [here](https://github.com/jbryer/EPSY630Spring2020/raw/master/Textbook/os4.pdf), from the [OpenIntro](http://www.openintro.org/stat/textbook.php) website, or a printed copy can be ordered from [Amazon](https://www.openintro.org/redirect.php?go=amazon_os3&referrer=/stat/textbook.php).
 
+Navarro, D. (2018, version 0.6). *Learning Statistics with R*
+
+> This is free textbook that supplements a lot of the material covered in Diez and Barr. We will use the chapter on Bayesian analysis. You can download a [PDF version](https://github.com/jbryer/EPSY630Spring2020/raw/master/Textbook/lsr-0.6.pdf), [Bookdown version](https://learningstatisticswithr.com/book/), or visit the author's website at [learningstatisticswithr.com](https://learningstatisticswithr.com/).
+
 #### Recommended
 
 Wickham, H., & Grolemund, G. (2016) *R for Data Science*. O'Reilly.
