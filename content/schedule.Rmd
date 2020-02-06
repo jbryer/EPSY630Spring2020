@@ -66,7 +66,7 @@ meetups$Date <- format(meetups$Date, '%a, %b %d')
 
 
 ```{r schedule-table, echo=FALSE, results='asis'}
-knitr::kable(meetups[,c('Date','Topic','Resources')], )
+knitr::kable(meetups[,c('Date','Topic','Resources')])
 ```
 
 ```{r schedule-figure, echo=FALSE, warning=FALSE, message=FALSE}
