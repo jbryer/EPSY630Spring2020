@@ -1,0 +1,150 @@
+---
+title: "Survey Results"
+subtitle: "EPSY 630 - Spring 2020"
+author: "Jason Bryer, Ph.D."
+institute: "University at Albany"
+date: "February 3, 2020"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, my-theme.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<style>
+
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+</style>
+
+
+# Loading Data
+
+```{r setup, message=FALSE, warning=FALSE}
+library(likert)
+library(readxl)
+library(tidyverse)
+
+results <- readxl::read_excel('../course_data/Stats_Survey.xlsx') %>%
+	as.data.frame()
+names(results)
+```
+
+---
+
+# Data Preparation
+
+Recode our qualitative variables to factors in R.
+
+```{r}
+results$Level <- factor(results$Level, levels = c('M', 'D'),
+						labels = c("Master's", "Doctorate"))
+
+results$GradCourse <- results$GradCourse == 'Y'
+```
+
+---
+
+# Data Preparation (MASS)
+
+```{r}
+mass.items <- c('I find math interesting.',
+				'I get uptight during math tests.',
+				'I think that I will use math in the future.',
+				'Mind goes blank and I am unable to think clearly when doing my math test.',
+				'Math relates to my life.',
+				'I worry about my ability to solve math problems.',
+				'I get a sinking feeling when I try to do math problems.',
+				'I find math challenging.',
+				'Mathematics makes me feel nervous.',
+				'I would like to take more math classes.',
+				'Mathematics makes me feel uneasy.',
+				'Math is one of my favorite subjects.',
+				'I enjoy learning with mathematics.',
+				'Mathematics makes me feel confused.')
+for(i in 2:15) {
+	results[,i] <- factor(results[,i],
+						  levels = 1:5,
+						  labels = c('Strongly Disagree', 'Disagree', 'Neutral',
+						  		   'Agree', 'Strongly Agree'),
+						  ordered = TRUE)
+}
+mass.results <- results[,2:15]
+names(mass.results) <- mass.items
+```
+
+
+---
+
+# Data Preparation (Stats Content)
+
+```{r}
+stats.items <- c('Descriptive Statistics',
+                 'Probability',
+                 'Data visualizations',
+                 'Central limit theorem',
+                 'Null hypothesis testing',
+                 'Assumptions for regression',
+                 'Linear regression',
+                 'Multiple regression',
+                 'ANOVA',
+                 'Type I and II errors',
+                 'Correlation',
+                 'SPSS', 'R', 'Chi Squared tests')
+
+for(i in 17:30) {
+	results[,i] <- factor(results[,i],
+						  levels = 1:5,
+						  labels = c('Not at all familiar', 'Sligtly familiar',
+						  		     'Somewhat familiar',
+						  		     'Moderately familiar', 'Extremely familiar'),
+						  ordered = TRUE)
+}
+stats.results <- results[,17:30]
+names(stats.results) <- stats.items
+```
+
+
+---
+
+# Completed a graduate statistics course
+
+```{r, fig.height = 5, fig.align='center'}
+tab <- results %>% group_by(GradCourse) %>% summarize(count = n()) %>%
+	mutate(prop = count / sum(count),
+		   label = paste0(round(prop*100, digits=1), '% (n = ', count, ')'))
+ggplot(tab, aes(x = GradCourse, y = count)) + geom_bar(stat = 'identity') +
+	geom_text(aes(label = label), vjust = -1) +
+	ggtitle('Have you completed a graduate level statistics course?') +
+	ylim(c(0, 15)) + ylab('Count') + xlab('Completed Graduate Statistics Course')
+```
+
+
+---
+
+# Familiarity with Statistical Topics
+
+```{r, fig.width=12}
+likert(stats.results) %>% plot(center = 2.5)
+```
+
+---
+
+# Math Anxiety Survey Scale
+
+```{r, fig.width = 12}
+likert(mass.results) %>% plot()
+```
+

@@ -20,46 +20,6 @@ editor_options:
 
 
 
-## Installation
-
-* Instructions for R are here: https://epsy630.bryer.org/getting_started/software/
-	* R: https://cran.r-project.org/
-	* RStudio: https://www.rstudio.com/products/rstudio/download/
-
-### LaTeX
-
-
-```r
-install.packages('tinytex')
-tinytex::install_tinytex()
-```
-
-## Installing R Packages
-
-Open the `R/setup.R` file in RStudio and click the `Source` button.
-
-Or run this command in R:
-
-
-```r
-source('https://raw.githubusercontent.com/jbryer/IntroR/master/Installation/Setup.r')
-```
-
-This is the contents of that R script:
-
-
-```r
-pkgs <- c('tidyverse','devtools','reshape2','RSQLite',
-		  'psa','multilevelPSA','PSAboot','TriMatch','likert',
-		  'openintro','OIdata','psych','knitr','markdown','rmarkdown','shiny')
-
-install.packages(pkgs)
-
-devtools::install_github('jbryer/ipeds')
-devtools::install_github('jbryer/sqlutils')
-devtools::install_github("seankross/lego")
-devtools::install_github("jbryer/DATA606")
-```
 
 # Overview #####################################################################
 
@@ -78,7 +38,7 @@ devtools::install_github("jbryer/DATA606")
 >-  FREE!
 	*R is available as Free Software under the terms of the Free Software Foundation's GNU General Public License in source code form. It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.*
 >-  Available for multiple platforms (i.e. Windows, Mac, Linux).
->-  Easily extensible with (currently) 15,353 packages listed on CRAN.
+>-  Easily extensible with (currently) 15,352 packages listed on CRAN.
 >-  Scriptable.
 >-  Publication grade graphics.
 >-  Multiple ways of doing the same thing.
@@ -139,30 +99,47 @@ http://www.stat.bell-labs.com/S/history.html
 * 2000: R version 1.0.0 is released.
 * 2013: R version 3.0 is released on April 3, 2013.
 * Current version of R is 3.6.1
-* As of January 26, 2020 15,353 packages listed on CRAN. 
+* As of January 27, 2020 15,352 packages listed on CRAN. 
 
-## Installing R
+## Installation
 
-The latest version of R can be downloaded from [cran.r-project.org](http://cran.r-project.org). The current version of R is:
+* Instructions for R are here: https://epsy630.bryer.org/getting_started/software/
+	* R: https://cran.r-project.org/
+	* RStudio: https://www.rstudio.com/products/rstudio/download/
 
-
-```r
-R.version$version.string
-```
-
-```
-## [1] "R version 3.6.1 (2019-07-05)"
-```
-
-You will also want to install [RStudio](http://rstudio.com).
-
-Installation instructions are available here: [https://epsy630.bryer.org/getting_started/software/](https://epsy630.bryer.org/getting_started/software/)
- 
-To install the set of packages used for this course, run the following R command:
+### LaTeX
 
 
 ```r
-source('https://raw.githubusercontent.com/jbryer/EPSY887Fall2019/master/R/Setup.r')
+install.packages('tinytex')
+tinytex::install_tinytex()
+```
+
+## Installing R Packages
+
+Open the `R/setup.R` file in RStudio and click the `Source` button.
+
+Or run this command in R:
+
+
+```r
+source('https://raw.githubusercontent.com/jbryer/IntroR/master/Installation/Setup.r')
+```
+
+This is the contents of that R script:
+
+
+```r
+pkgs <- c('tidyverse','devtools','reshape2','RSQLite',
+		  'psa','multilevelPSA','PSAboot','TriMatch','likert',
+		  'openintro','OIdata','psych','knitr','markdown','rmarkdown','shiny')
+
+install.packages(pkgs)
+
+devtools::install_github('jbryer/ipeds')
+devtools::install_github('jbryer/sqlutils')
+devtools::install_github("seankross/lego")
+devtools::install_github("jbryer/DATA606")
 ```
 
 ## R as a Big Calculator
@@ -296,112 +273,6 @@ Read lines             |            | `base::scan`, `readr::read_lines`
 Microsoft Excel        | xls, xlsx  | `gdata::read.xls`, `readxl::read_excel`
 
 
-## Reading Data from Databases
-
-The `RODBC` package is the most common way to connect to a variety of databases. 
-
-* `odbcConnect` - Open a connection to an ODBC database
-* `sqlFetch`    - Read a table from an ODBC database into a data frame
-* `sqlQuery`    - Submit a query to an ODBC database and return the results
-* `close`       - Close the connection
-
-Other packages used to connect to specific databases:
-
-* MySQL      - `RMySQL`
-* Oracle     - `ROracle`
-* JDBC       - `RJDBC`
-* SQLite     - `RSQLite`
-* PostgreSQL - `RPosgreSQL`
-
-## The `sqlutils` Package
-
-The [`sqlutils`](https://github.com/jbryer/sqlutils) is designed to help manage many query files and facilitates documenting and parameterizing the queries.
-
-
-```r
-library(sqlutils)
-sqlPaths()
-```
-
-```
-## [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/sqlutils/sql"
-```
-
-```r
-getQueries()
-```
-
-```
-## [1] "StudentsInRange" "StudentSummary"
-```
-
-```r
-getParameters('StudentsInRange')
-```
-
-```
-## [1] "startDate" "endDate"
-```
-
-
-## Example SQL File (`StudentsInRange`)
-
-```
-#' Students enrolled within the given date range.
-#' 
-#' @param startDate the start of the date range to return students.
-#' @default startDate format(Sys.Date(), '%Y-01-01')
-#' @param endDate the end of the date range to return students.
-#' @default endDate format(Sys.Date(), '%Y-%m-%d')
-#' @return CreatedDate the date the row was added to the warehouse data.
-#' @return StudentId the student id.
-SELECT * 
-FROM students 
-WHERE CreatedDate >= ':startDate:' AND CreatedDate <= ':endDate:'
-```
-
-
-```r
-sqldoc('StudentsInRange')
-```
-
-```
-## Students enrolled within the given date range.
-## Parameters:
-##      param                                            desc                        default
-##  startDate the start of the date range to return students.                   '2012-01-01'
-##    endDate   the end of the date range to return students. format(Sys.Date(), '%Y-%m-%d')
-##  default.val
-##   2012-01-01
-##   2020-01-26
-## Returns (note that this list may not be complete):
-##     variable                                              desc
-##  CreatedDate the date the row was added to the warehouse data.
-##    StudentId                                   the student id.
-```
-
-## Running Query
-
-
-```r
-require(RSQLite)
-sqlfile <- paste(system.file(package='sqlutils'), '/db/students.db', sep='')
-m <- dbDriver("SQLite")
-conn <- dbConnect(m, dbname=sqlfile)
-q1 <- execQuery('StudentSummary', connection=conn)
-head(q1)
-```
-
-```
-##   CreatedDate count
-## 1  2011-07-15  2886
-## 2  2011-08-15  2983
-## 3  2011-09-15  3071
-## 4  2011-10-15  3059
-## 5  2011-11-15  3058
-## 6  2011-12-15  3074
-```
-
 ## IPEDS Data
 
 The `ipeds` R package provides an interface to download data file from IPEDS.
@@ -445,9 +316,9 @@ The `getIPEDSSurvey` and `ipedsHelp` are the most commonly used functions. The f
 
 
 ```r
-directory = getIPEDSSurvey('HD', 2013)
-admissions = getIPEDSSurvey("IC", 2013)
-retention = getIPEDSSurvey("EFD", 2013)
+directory <- getIPEDSSurvey('HD', 2013)
+admissions <- getIPEDSSurvey("IC", 2013)
+retention <- getIPEDSSurvey("EFD", 2013)
 ```
 
 
@@ -828,7 +699,7 @@ format(today, '%B %d, $Y')
 ```
 
 ```
-## [1] "January 26, $Y"
+## [1] "January 27, $Y"
 ```
 
 ```r

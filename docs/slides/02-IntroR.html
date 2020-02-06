@@ -105,7 +105,91 @@ slide:not(.current) .plotly.html-widget{
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Installation</h2></hgroup><article  class="smaller " id="installation">
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Overview</h2></hgroup><article  id="overview" class="smaller ">
+
+</article></slide><slide class=""><hgroup><h2>What is R?</h2></hgroup><article  id="what-is-r" class="smaller ">
+
+<p>&ldquo;R is a language and environment for statistical computing and graphics. It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues…&rdquo;</p>
+
+<p>&ldquo;R provides a wide variety of statistical (linear and non linear modeling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.&rdquo;<br/>(R-project.org)</p>
+
+</article></slide><slide class=""><hgroup><h2>Pros</h2></hgroup><article  id="pros" class="smaller ">
+
+<ul class = 'build'>
+<li>FREE! <em>R is available as Free Software under the terms of the Free Software Foundation’s GNU General Public License in source code form. It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.</em></li>
+<li>Available for multiple platforms (i.e. Windows, Mac, Linux).</li>
+<li>Easily extensible with (currently) 15,352 packages listed on CRAN.</li>
+<li>Scriptable.</li>
+<li>Publication grade graphics.</li>
+<li>Multiple ways of doing the same thing.</li>
+<li>Quickly becoming the <em>de facto</em> standard among statistician.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Cons</h2></hgroup><article  id="cons" class="smaller ">
+
+<ul class = 'build'>
+<li>Has a steeper learning curve.</li>
+<li>Multiple ways of doing the same thing.</li>
+<li>Can have difficulty with <em>very</em> large datasets.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>The Popularity of R</h2></hgroup><article  id="the-popularity-of-r" class="smaller flexbox vcenter">
+
+<img src='02-IntroR_files/figure-html/Rcitations-1.png' title=''/>
+
+<p>Firth, D (2011). R and citations. Weblog entry at URL <a href='https://statgeek.wordpress.com/2011/06/25/r-and-citations/' title=''>https://statgeek.wordpress.com/2011/06/25/r-and-citations/</a>.</p>
+
+<p>See also: Muenchen, R.A. (2017). The Popularity of Data Analysis Software. Welog entry at URL <a href='http://r4stats.com/articles/popularity/' title=''>http://r4stats.com/articles/popularity/</a></p>
+
+</article></slide><slide class=""><hgroup><h2>R’s Roots… S</h2></hgroup><article  id="rs-roots-s" class="smaller ">
+
+<ul>
+<li>S is a language that was developed by John Chambers and others at Bell Labs.</li>
+<li>S was initiated in 1976 as an internal statistical analysis environment - originally implemented as Fortran libraries.</li>
+<li>Early versions of the language did not contain functions for statistical modeling.</li>
+<li>In 1988 the system was rewritten in C and began to resemble the system that we have today (this was Version 3 of the language). The book Statistical Models in S by Chambers and Hastie (the blue book) documents the statistical analysis functionality.</li>
+<li>Version 4 of the S language was released in 1998 and is the version we use today. The book Programming with Data by John Chambers (the green book) documents this version of the language.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>History of S</h2></hgroup><article  id="history-of-s" class="smaller ">
+
+<ul>
+<li>In 1993 Bell Labs gave StatSci (now Insightful Corp.) an exclusive license to develop and sell the S language.</li>
+<li>In 2004 Insightful purchased the S language from Lucent for $2 million and is the current owner.</li>
+<li>In 2006, Alcatel purchased Lucent Technologies and is now called Alcatel-Lucent.</li>
+<li>Insightful sells its implementation of the S language under the product name S-PLUS and has built a number of fancy features (GUIs, mostly) on top of it-hence the &ldquo;PLUS&rdquo;.</li>
+<li>In 2008 Insightful is acquired by TIBCO for $25 million; future of S-PLUS is uncertain.</li>
+<li>The S language itself has not changed dramatically since 1998.</li>
+<li>In 1998, S won the Association for Computing Machinery’s Software System Award.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section" class="smaller ">
+
+<p>In &ldquo;Stages in the Evolution of S&rdquo;, John Chambers writes:</p>
+
+<blockquote>
+
+&ldquo;[W]e wanted users to be able to begin in an interactive environment, where they did not consciously think of themselves as programming. Then as their needs became clearer and their sophistication increased, they should be able to slide gradually into programming, when the language and system aspects would become more important.&rdquo;
+
+</blockquote>
+
+<p><a href='http://www.stat.bell-labs.com/S/history.html' title=''>http://www.stat.bell-labs.com/S/history.html</a></p>
+
+</article></slide><slide class=""><hgroup><h2>History of R</h2></hgroup><article  id="history-of-r" class="smaller ">
+
+<ul>
+<li>1991: Created in New Zealand by Ross Ihaka and Robert Gentleman. Their experience developing R is documented in a 1996 JCGS paper.</li>
+<li>1993: First announcement of R to the public.</li>
+<li>1995: Martin M?achler convinces Ross and Robert to use the GNU General Public License to make R free software.</li>
+<li>1996: A public mailing list is created (R-help and R-devel)</li>
+<li>1997: The R Core Group is formed (containing some people associated with S-PLUS). The core group controls the source code for R.</li>
+<li>2000: R version 1.0.0 is released.</li>
+<li>2013: R version 3.0 is released on April 3, 2013.</li>
+<li>Current version of R is 3.6.1</li>
+<li>As of January 27, 2020 15,352 packages listed on CRAN.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Installation</h2></hgroup><article  id="installation" class="smaller ">
 
 <ul>
 <li>Instructions for R are here: <a href='https://epsy630.bryer.org/getting_started/software/' title=''>https://epsy630.bryer.org/getting_started/software/</a>
@@ -121,7 +205,7 @@ slide:not(.current) .plotly.html-widget{
 <pre class = 'prettyprint lang-r'>install.packages(&#39;tinytex&#39;)
 tinytex::install_tinytex()</pre>
 
-</article></slide><slide class=""><hgroup><h2>Installing R Packages</h2></hgroup><article  class="smaller " id="installing-r-packages">
+</article></slide><slide class=""><hgroup><h2>Installing R Packages</h2></hgroup><article  id="installing-r-packages" class="smaller ">
 
 <p>Open the <code>R/setup.R</code> file in RStudio and click the <code>Source</code> button.</p>
 
@@ -142,107 +226,7 @@ devtools::install_github(&#39;jbryer/sqlutils&#39;)
 devtools::install_github(&quot;seankross/lego&quot;)
 devtools::install_github(&quot;jbryer/DATA606&quot;)</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Overview</h2></hgroup><article  class="smaller " id="overview">
-
-</article></slide><slide class=""><hgroup><h2>What is R?</h2></hgroup><article  class="smaller " id="what-is-r">
-
-<p>&ldquo;R is a language and environment for statistical computing and graphics. It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues…&rdquo;</p>
-
-<p>&ldquo;R provides a wide variety of statistical (linear and non linear modeling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.&rdquo;<br/>(R-project.org)</p>
-
-</article></slide><slide class=""><hgroup><h2>Pros</h2></hgroup><article  class="smaller " id="pros">
-
-<ul class = 'build'>
-<li>FREE! <em>R is available as Free Software under the terms of the Free Software Foundation’s GNU General Public License in source code form. It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.</em></li>
-<li>Available for multiple platforms (i.e. Windows, Mac, Linux).</li>
-<li>Easily extensible with (currently) 15,353 packages listed on CRAN.</li>
-<li>Scriptable.</li>
-<li>Publication grade graphics.</li>
-<li>Multiple ways of doing the same thing.</li>
-<li>Quickly becoming the <em>de facto</em> standard among statistician.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Cons</h2></hgroup><article  class="smaller " id="cons">
-
-<ul class = 'build'>
-<li>Has a steeper learning curve.</li>
-<li>Multiple ways of doing the same thing.</li>
-<li>Can have difficulty with <em>very</em> large datasets.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>The Popularity of R</h2></hgroup><article  class="smaller flexbox vcenter" id="the-popularity-of-r">
-
-<img src='02-IntroR_files/figure-html/Rcitations-1.png' title=''/>
-
-<p>Firth, D (2011). R and citations. Weblog entry at URL <a href='https://statgeek.wordpress.com/2011/06/25/r-and-citations/' title=''>https://statgeek.wordpress.com/2011/06/25/r-and-citations/</a>.</p>
-
-<p>See also: Muenchen, R.A. (2017). The Popularity of Data Analysis Software. Welog entry at URL <a href='http://r4stats.com/articles/popularity/' title=''>http://r4stats.com/articles/popularity/</a></p>
-
-</article></slide><slide class=""><hgroup><h2>R’s Roots… S</h2></hgroup><article  class="smaller " id="rs-roots-s">
-
-<ul>
-<li>S is a language that was developed by John Chambers and others at Bell Labs.</li>
-<li>S was initiated in 1976 as an internal statistical analysis environment - originally implemented as Fortran libraries.</li>
-<li>Early versions of the language did not contain functions for statistical modeling.</li>
-<li>In 1988 the system was rewritten in C and began to resemble the system that we have today (this was Version 3 of the language). The book Statistical Models in S by Chambers and Hastie (the blue book) documents the statistical analysis functionality.</li>
-<li>Version 4 of the S language was released in 1998 and is the version we use today. The book Programming with Data by John Chambers (the green book) documents this version of the language.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>History of S</h2></hgroup><article  class="smaller " id="history-of-s">
-
-<ul>
-<li>In 1993 Bell Labs gave StatSci (now Insightful Corp.) an exclusive license to develop and sell the S language.</li>
-<li>In 2004 Insightful purchased the S language from Lucent for $2 million and is the current owner.</li>
-<li>In 2006, Alcatel purchased Lucent Technologies and is now called Alcatel-Lucent.</li>
-<li>Insightful sells its implementation of the S language under the product name S-PLUS and has built a number of fancy features (GUIs, mostly) on top of it-hence the &ldquo;PLUS&rdquo;.</li>
-<li>In 2008 Insightful is acquired by TIBCO for $25 million; future of S-PLUS is uncertain.</li>
-<li>The S language itself has not changed dramatically since 1998.</li>
-<li>In 1998, S won the Association for Computing Machinery’s Software System Award.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller " id="section">
-
-<p>In &ldquo;Stages in the Evolution of S&rdquo;, John Chambers writes:</p>
-
-<blockquote>
-
-&ldquo;[W]e wanted users to be able to begin in an interactive environment, where they did not consciously think of themselves as programming. Then as their needs became clearer and their sophistication increased, they should be able to slide gradually into programming, when the language and system aspects would become more important.&rdquo;
-
-</blockquote>
-
-<p><a href='http://www.stat.bell-labs.com/S/history.html' title=''>http://www.stat.bell-labs.com/S/history.html</a></p>
-
-</article></slide><slide class=""><hgroup><h2>History of R</h2></hgroup><article  class="smaller " id="history-of-r">
-
-<ul>
-<li>1991: Created in New Zealand by Ross Ihaka and Robert Gentleman. Their experience developing R is documented in a 1996 JCGS paper.</li>
-<li>1993: First announcement of R to the public.</li>
-<li>1995: Martin M?achler convinces Ross and Robert to use the GNU General Public License to make R free software.</li>
-<li>1996: A public mailing list is created (R-help and R-devel)</li>
-<li>1997: The R Core Group is formed (containing some people associated with S-PLUS). The core group controls the source code for R.</li>
-<li>2000: R version 1.0.0 is released.</li>
-<li>2013: R version 3.0 is released on April 3, 2013.</li>
-<li>Current version of R is 3.6.1</li>
-<li>As of January 26, 2020 15,353 packages listed on CRAN.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Installing R</h2></hgroup><article  class="smaller " id="installing-r">
-
-<p>The latest version of R can be downloaded from <a href='http://cran.r-project.org' title=''>cran.r-project.org</a>. The current version of R is:</p>
-
-<pre class = 'prettyprint lang-r'>R.version$version.string</pre>
-
-<pre >## [1] &quot;R version 3.6.1 (2019-07-05)&quot;</pre>
-
-<p>You will also want to install <a href='http://rstudio.com' title=''>RStudio</a>.</p>
-
-<p>Installation instructions are available here: <a href='https://epsy630.bryer.org/getting_started/software/' title=''>https://epsy630.bryer.org/getting_started/software/</a></p>
-
-<p>To install the set of packages used for this course, run the following R command:</p>
-
-<pre class = 'prettyprint lang-r'>source(&#39;https://raw.githubusercontent.com/jbryer/EPSY887Fall2019/master/R/Setup.r&#39;)</pre>
-
-</article></slide><slide class=""><hgroup><h2>R as a Big Calculator</h2></hgroup><article  class="smaller " id="r-as-a-big-calculator">
+</article></slide><slide class=""><hgroup><h2>R as a Big Calculator</h2></hgroup><article  id="r-as-a-big-calculator" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>2 + 2</pre>
 
@@ -256,13 +240,13 @@ devtools::install_github(&quot;jbryer/DATA606&quot;)</pre>
 
 <pre >## [1] -1+0i</pre>
 
-</article></slide><slide class=""><hgroup><h2>Euler’s Formula</h2></hgroup><article  class="smaller " id="eulers-formula">
+</article></slide><slide class=""><hgroup><h2>Euler’s Formula</h2></hgroup><article  id="eulers-formula" class="smaller ">
 
 <p><font size='+3'> \[ { e }^{ i\pi  }+1=0 \] </font></p>
 
 <p>&ldquo;The most remarkable formula in mathematics&rdquo;<br/>- Richard Feyneman</p>
 
-</article></slide><slide class=""><hgroup><h2>R Packages</h2></hgroup><article  class="smaller " id="r-packages">
+</article></slide><slide class=""><hgroup><h2>R Packages</h2></hgroup><article  id="r-packages" class="smaller ">
 
 <p>One aspect that makes R popular is how (relatively) easy it is to extend it’s functionality vis-à-vis R packages. R packages are collections of R functions, data, and documentation.</p>
 
@@ -274,7 +258,7 @@ devtools::install_github(&quot;jbryer/DATA606&quot;)</pre>
 
 <pre class = 'prettyprint lang-r'>library(likert)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Installed and Loaded Packages</h2></hgroup><article  class="smaller " id="installed-and-loaded-packages">
+</article></slide><slide class=""><hgroup><h2>Installed and Loaded Packages</h2></hgroup><article  id="installed-and-loaded-packages" class="smaller ">
 
 <p>The <code>library()</code> function without any parameters will print all installed R packages whereas the <code>search()</code> function will list loaded packages (technically all available namespaces/environments, more on that later).</p>
 
@@ -288,13 +272,13 @@ search()</pre>
 ## [17] &quot;package:grDevices&quot; &quot;package:utils&quot;     &quot;package:datasets&quot;  &quot;package:methods&quot;  
 ## [21] &quot;Autoloads&quot;         &quot;package:base&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Github Packages</h2></hgroup><article  class="smaller " id="github-packages">
+</article></slide><slide class=""><hgroup><h2>Github Packages</h2></hgroup><article  id="github-packages" class="smaller ">
 
 <p><a href='http://github.com' title=''>Github</a> is an online source repository and has become a popular place for R package developers to store their R packages. The <code>devtools</code> R package, designed to help package developers, has a function, <code>install_github</code> that will install R packages from a Github repository.</p>
 
 <pre class = 'prettyprint lang-r'>devtools::install_github(&#39;jbryer/likert&#39;)</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>ls()</code></h2></hgroup><article  class="smaller " id="ls">
+</article></slide><slide class=""><hgroup><h2><code>ls()</code></h2></hgroup><article  id="ls" class="smaller ">
 
 <p>We can use the <code>ls()</code> function to determine what functions are available in a package.</p>
 
@@ -303,7 +287,7 @@ search()</pre>
 <pre >## [1] &quot;likert&quot;                &quot;likert.bar.plot&quot;       &quot;likert.density.plot&quot;   &quot;likert.heat.plot&quot;     
 ## [5] &quot;likert.histogram.plot&quot; &quot;likert.options&quot;        &quot;recode&quot;                &quot;reverse.levels&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Getting Help</h2></hgroup><article  class="smaller " id="getting-help">
+</article></slide><slide class=""><hgroup><h2>Getting Help</h2></hgroup><article  id="getting-help" class="smaller ">
 
 <p>R provides extensive documentation and help. The help.start() function will launch a webpage with links to: * The R manuals * The R FAQ * Search engine * and many other useful sites</p>
 
@@ -315,9 +299,9 @@ search()</pre>
 
 <p>Lastly, to search the R mailing lists, use the <code>RSiteSearch()</code> function.</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Loading Data</h2></hgroup><article  class="smaller " id="loading-data">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Loading Data</h2></hgroup><article  id="loading-data" class="smaller ">
 
-</article></slide><slide class=""><hgroup><h2>Reading Data</h2></hgroup><article  class="smaller " id="reading-data">
+</article></slide><slide class=""><hgroup><h2>Reading Data</h2></hgroup><article  id="reading-data" class="smaller ">
 
 <table class = 'rmdtable'>
 <tr class="header">
@@ -372,91 +356,7 @@ search()</pre>
 </tr>
 </table>
 
-</article></slide><slide class=""><hgroup><h2>Reading Data from Databases</h2></hgroup><article  class="smaller " id="reading-data-from-databases">
-
-<p>The <code>RODBC</code> package is the most common way to connect to a variety of databases.</p>
-
-<ul>
-<li><code>odbcConnect</code> - Open a connection to an ODBC database</li>
-<li><code>sqlFetch</code> - Read a table from an ODBC database into a data frame</li>
-<li><code>sqlQuery</code> - Submit a query to an ODBC database and return the results</li>
-<li><code>close</code> - Close the connection</li>
-</ul>
-
-<p>Other packages used to connect to specific databases:</p>
-
-<ul>
-<li>MySQL - <code>RMySQL</code></li>
-<li>Oracle - <code>ROracle</code></li>
-<li>JDBC - <code>RJDBC</code></li>
-<li>SQLite - <code>RSQLite</code></li>
-<li>PostgreSQL - <code>RPosgreSQL</code></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>The <code>sqlutils</code> Package</h2></hgroup><article  class="smaller " id="the-sqlutils-package">
-
-<p>The <a href='https://github.com/jbryer/sqlutils' title=''><code>sqlutils</code></a> is designed to help manage many query files and facilitates documenting and parameterizing the queries.</p>
-
-<pre class = 'prettyprint lang-r'>library(sqlutils)
-sqlPaths()</pre>
-
-<pre >## [1] &quot;/Library/Frameworks/R.framework/Versions/3.6/Resources/library/sqlutils/sql&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>getQueries()</pre>
-
-<pre >## [1] &quot;StudentsInRange&quot; &quot;StudentSummary&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>getParameters(&#39;StudentsInRange&#39;)</pre>
-
-<pre >## [1] &quot;startDate&quot; &quot;endDate&quot;</pre>
-
-</article></slide><slide class=""><hgroup><h2>Example SQL File (<code>StudentsInRange</code>)</h2></hgroup><article  class="smaller " id="example-sql-file-studentsinrange">
-
-<pre >#&#39; Students enrolled within the given date range.
-#&#39; 
-#&#39; @param startDate the start of the date range to return students.
-#&#39; @default startDate format(Sys.Date(), &#39;%Y-01-01&#39;)
-#&#39; @param endDate the end of the date range to return students.
-#&#39; @default endDate format(Sys.Date(), &#39;%Y-%m-%d&#39;)
-#&#39; @return CreatedDate the date the row was added to the warehouse data.
-#&#39; @return StudentId the student id.
-SELECT * 
-FROM students 
-WHERE CreatedDate &gt;= &#39;:startDate:&#39; AND CreatedDate &lt;= &#39;:endDate:&#39;</pre>
-
-<pre class = 'prettyprint lang-r'>sqldoc(&#39;StudentsInRange&#39;)</pre>
-
-<pre >## Students enrolled within the given date range.
-## Parameters:
-##      param                                            desc                        default
-##  startDate the start of the date range to return students.                   &#39;2012-01-01&#39;
-##    endDate   the end of the date range to return students. format(Sys.Date(), &#39;%Y-%m-%d&#39;)
-##  default.val
-##   2012-01-01
-##   2020-01-26
-## Returns (note that this list may not be complete):
-##     variable                                              desc
-##  CreatedDate the date the row was added to the warehouse data.
-##    StudentId                                   the student id.</pre>
-
-</article></slide><slide class=""><hgroup><h2>Running Query</h2></hgroup><article  class="smaller " id="running-query">
-
-<pre class = 'prettyprint lang-r'>require(RSQLite)
-sqlfile &lt;- paste(system.file(package=&#39;sqlutils&#39;), &#39;/db/students.db&#39;, sep=&#39;&#39;)
-m &lt;- dbDriver(&quot;SQLite&quot;)
-conn &lt;- dbConnect(m, dbname=sqlfile)
-q1 &lt;- execQuery(&#39;StudentSummary&#39;, connection=conn)
-head(q1)</pre>
-
-<pre >##   CreatedDate count
-## 1  2011-07-15  2886
-## 2  2011-08-15  2983
-## 3  2011-09-15  3071
-## 4  2011-10-15  3059
-## 5  2011-11-15  3058
-## 6  2011-12-15  3074</pre>
-
-</article></slide><slide class=""><hgroup><h2>IPEDS Data</h2></hgroup><article  class="smaller " id="ipeds-data">
+</article></slide><slide class=""><hgroup><h2>IPEDS Data</h2></hgroup><article  id="ipeds-data" class="smaller ">
 
 <p>The <code>ipeds</code> R package provides an interface to download data file from IPEDS.</p>
 
@@ -484,13 +384,13 @@ unique(surveys$Survey)</pre>
 ## 5    FLAGS                                           Response status for all survey components
 ## 6    EFEST                                                                Estimated enrollment</pre>
 
-</article></slide><slide class=""><hgroup><h2>IPEDS Data</h2></hgroup><article  class="smaller " id="ipeds-data-1">
+</article></slide><slide class=""><hgroup><h2>IPEDS Data</h2></hgroup><article  id="ipeds-data-1" class="smaller ">
 
 <p>The <code>getIPEDSSurvey</code> and <code>ipedsHelp</code> are the most commonly used functions. The former will download and load the data into R (note data is cached and downloaded once per installation); the latter will provide the data dictionary for the given survey.</p>
 
-<pre class = 'prettyprint lang-r'>directory = getIPEDSSurvey(&#39;HD&#39;, 2013)
-admissions = getIPEDSSurvey(&quot;IC&quot;, 2013)
-retention = getIPEDSSurvey(&quot;EFD&quot;, 2013)</pre>
+<pre class = 'prettyprint lang-r'>directory &lt;- getIPEDSSurvey(&#39;HD&#39;, 2013)
+admissions &lt;- getIPEDSSurvey(&quot;IC&quot;, 2013)
+retention &lt;- getIPEDSSurvey(&quot;EFD&quot;, 2013)</pre>
 
 <pre class = 'prettyprint lang-r'>ipedsHelp(&#39;HD&#39;, 2013)</pre>
 
@@ -581,9 +481,9 @@ retention = getIPEDSSurvey(&quot;EFD&quot;, 2013)</pre>
 ## 5     138        1
 ## 6      -2       -2</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>The R Language</h2></hgroup><article  class="smaller " id="the-r-language">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>The R Language</h2></hgroup><article  id="the-r-language" class="smaller ">
 
-</article></slide><slide class=""><hgroup><h2>Arithmetic Operators</h2></hgroup><article  class="smaller " id="arithmetic-operators">
+</article></slide><slide class=""><hgroup><h2>Arithmetic Operators</h2></hgroup><article  id="arithmetic-operators" class="smaller ">
 
 <ul>
 <li><code>+</code> - addition</li>
@@ -606,7 +506,7 @@ retention = getIPEDSSurvey(&quot;EFD&quot;, 2013)</pre>
 
 <pre >## [1] 2</pre>
 
-</article></slide><slide class=""><hgroup><h2>R Primitive Vectors</h2></hgroup><article  class="smaller " id="r-primitive-vectors">
+</article></slide><slide class=""><hgroup><h2>R Primitive Vectors</h2></hgroup><article  id="r-primitive-vectors" class="smaller ">
 
 <ul>
 <li><code>logicial</code> (e.g. <code>TRUE</code>, <code>FALSE</code>)</li>
@@ -623,7 +523,7 @@ class(tmp)</pre>
 
 <pre >## [1] &quot;numeric&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>R Primitive Vectors (cont.)</h2></hgroup><article  class="smaller " id="r-primitive-vectors-cont.">
+</article></slide><slide class=""><hgroup><h2>R Primitive Vectors (cont.)</h2></hgroup><article  id="r-primitive-vectors-cont." class="smaller ">
 
 <p>To test if an object is of a particular class, use the <code>is.XXX</code> set of functions:</p>
 
@@ -637,7 +537,7 @@ class(tmp)</pre>
 
 <pre >## [1] &quot;2112&quot;             &quot;3.14159265358979&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Data Types in R</h2></hgroup><article  class="smaller " id="data-types-in-r">
+</article></slide><slide class=""><hgroup><h2>Data Types in R</h2></hgroup><article  id="data-types-in-r" class="smaller ">
 
 <center>
 
@@ -645,7 +545,7 @@ class(tmp)</pre>
 
 </center>
 
-</article></slide><slide class=""><hgroup><h2>Lists</h2></hgroup><article  class="smaller " id="lists">
+</article></slide><slide class=""><hgroup><h2>Lists</h2></hgroup><article  id="lists" class="smaller ">
 
 <p>A <code>list</code> is an object that contains a list of named values</p>
 
@@ -674,7 +574,7 @@ tmp</pre>
 
 <pre >## [1] &quot;numeric&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  class="smaller " id="factors">
+</article></slide><slide class=""><hgroup><h2>Factors</h2></hgroup><article  id="factors" class="smaller ">
 
 <p>A <code>factor</code> is a way for R to store a nominal, or categorical, variable. R stores the underlying data as an integer where each value corresponds to a label.</p>
 
@@ -693,7 +593,7 @@ gender</pre>
 
 <pre >## [1] &quot;male&quot;    &quot;female&quot;  &quot;unknown&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Factors can be ordered</h2></hgroup><article  class="smaller columns-2" id="factors-can-be-ordered">
+</article></slide><slide class=""><hgroup><h2>Factors can be ordered</h2></hgroup><article  id="factors-can-be-ordered" class="smaller columns-2">
 
 <p>The <code>ordered</code> parameter indicates whether the levels in the factor should be ordered.</p>
 
@@ -765,14 +665,14 @@ table(grade, useNA=&#39;ifany&#39;)</pre>
 ##   1   2   3   4   5 
 ## 187  25  86 271 573</pre>
 
-</article></slide><slide class=""><hgroup><h2>Dates</h2></hgroup><article  class="smaller columns-2" id="dates">
+</article></slide><slide class=""><hgroup><h2>Dates</h2></hgroup><article  id="dates" class="smaller columns-2">
 
 <p>R stores dates in <code>YYYY-MM-DD</code> format. The <code>as.Date</code> function will convert characters to <code>Date</code>s if they are in that form. If not, the <code>format</code> can be specified to help R coerce it to a <code>Date</code> format.</p>
 
 <pre class = 'prettyprint lang-r'>today &lt;- Sys.Date()
 format(today, &#39;%B %d, $Y&#39;)</pre>
 
-<pre >## [1] &quot;January 26, $Y&quot;</pre>
+<pre >## [1] &quot;January 27, $Y&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>as.Date(&#39;2015-NOV-01&#39;, format=&#39;%Y-%b-%d&#39;)</pre>
 
@@ -789,7 +689,7 @@ format(today, &#39;%B %d, $Y&#39;)</pre>
 <li><code>%Y</code> - 4-digit year (e.g. <code>2015</code>)</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>NA versus NULL</h2></hgroup><article  class="smaller " id="na-versus-null">
+</article></slide><slide class=""><hgroup><h2>NA versus NULL</h2></hgroup><article  id="na-versus-null" class="smaller ">
 
 <p>R is just as much a programming language as it is a statistical software package. As such it represents null differently for programming (using <code>NULL</code>) than for data (using <code>NA</code>).</p>
 
@@ -800,7 +700,7 @@ format(today, &#39;%B %d, $Y&#39;)</pre>
 
 <p>For more details, see <a href='http://opendatagroup.com/2010/04/25/r-na-v-null/' title=''>http://opendatagroup.com/2010/04/25/r-na-v-null/</a></p>
 
-</article></slide><slide class=""><hgroup><h2>Handling Missing Data</h2></hgroup><article  class="smaller " id="handling-missing-data">
+</article></slide><slide class=""><hgroup><h2>Handling Missing Data</h2></hgroup><article  id="handling-missing-data" class="smaller ">
 
 <p>There are a number of functions available for finding and subsetting missing values:</p>
 
@@ -819,7 +719,7 @@ format(today, &#39;%B %d, $Y&#39;)</pre>
 <li><a href='https://cran.r-project.org/web/packages/Amelia/index.html' title=''><code>Amelia II</code></a> - <a href='https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=6&amp;cad=rja&amp;uact=8&amp;ved=0CE4QFjAFahUKEwjHn8aiuO3IAhWF8CYKHZzhABs&amp;url=http%3A%2F%2Fwww.jstatsoft.org%2Farticle%2Fview%2Fv045i07&amp;usg=AFQjCNE7Dn7a_YfAactbLSLRr3Fm3Rej2w&amp;sig2=t5NWLZMkyf_8MpCjSHAYFg&amp;bvm=bv.106379543,d.eWE' title=''>A Program for Missing Data</a></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Example: Excel File with Multiple Sheets</h2></hgroup><article  class="smaller " id="example-excel-file-with-multiple-sheets">
+</article></slide><slide class=""><hgroup><h2>Example: Excel File with Multiple Sheets</h2></hgroup><article  id="example-excel-file-with-multiple-sheets" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>library(gdata)
 summer2014 &lt;- read.xls(&#39;../course_data/MathAnxiety.xlsx&#39;, sheet=1)
@@ -841,7 +741,7 @@ head(mass)</pre>
 ## 5 Female  4  5  5  3  3  3  4  4  4   1   4   1   2   4 Summer 2014
 ## 6 Female  5  2  5  1  5  1  1  5  2   3   2   4   4   1 Summer 2014</pre>
 
-</article></slide><slide class=""><hgroup><h2>Data Frames</h2></hgroup><article  class="smaller " id="data-frames">
+</article></slide><slide class=""><hgroup><h2>Data Frames</h2></hgroup><article  id="data-frames" class="smaller ">
 
 <p>Data frames are collection of vectors, thereby making them two dimensional. Unlike matrices (see <code>?matrix</code>) where all data elements are of the same type (i.e. numeric, character, logical, complex), each column in a data frame can be of a different type.</p>
 
@@ -861,7 +761,7 @@ head(mass)</pre>
 
 <pre >## [1] 16</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>str</code></h2></hgroup><article  class="smaller " id="str">
+</article></slide><slide class=""><hgroup><h2><code>str</code></h2></hgroup><article  id="str" class="smaller ">
 
 <p>The <code>str</code> is perhaps the most useful function in R. It displays the structure of an R object.</p>
 
@@ -887,7 +787,7 @@ head(mass)</pre>
 
 <p>Although we now have the &ldquo;Environment&rdquo; tab in Rstudio!</p>
 
-</article></slide><slide class=""><hgroup><h2>Exploring the Data in Data Frames</h2></hgroup><article  class="smaller " id="exploring-the-data-in-data-frames">
+</article></slide><slide class=""><hgroup><h2>Exploring the Data in Data Frames</h2></hgroup><article  id="exploring-the-data-in-data-frames" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>head(mass)</pre>
 
@@ -910,7 +810,7 @@ head(mass)</pre>
 
 <pre class = 'prettyprint lang-r'>View(mass)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Subsetting Data Frames</h2></hgroup><article  class="smaller " id="subsetting-data-frames">
+</article></slide><slide class=""><hgroup><h2>Subsetting Data Frames</h2></hgroup><article  id="subsetting-data-frames" class="smaller ">
 
 <p>Using square brackets will allow you to subset from a data frame. The first parameter is for rows, the second for columns. Leaving one blank will return all rows or columns.</p>
 
@@ -933,7 +833,7 @@ head(mass)</pre>
 <pre >##  [1] 4 4 2 3 1 3 2 3 3 1 1 2 4 1 5 2 2 3 3 4 4 3 2 3 3 5 4 4 1 3 3 5 4 2 3 2 2 5 5 2 2 3 1 3 4 1 4 4
 ## [49] 5 3 1 4 1 3 4 4 4 5 5</pre>
 
-</article></slide><slide class=""><hgroup><h2>Subsetting Missing Values</h2></hgroup><article  class="smaller " id="subsetting-missing-values">
+</article></slide><slide class=""><hgroup><h2>Subsetting Missing Values</h2></hgroup><article  id="subsetting-missing-values" class="smaller ">
 
 <p>Using the <code>complete.cases</code> function, we can return rows with at least one missing values.</p>
 
@@ -955,7 +855,7 @@ tmp</pre>
 
 <pre >## [1] 2112    2    1    3    5    4</pre>
 
-</article></slide><slide class=""><hgroup><h2>Tip: One Column Data Frame</h2></hgroup><article  class="smaller " id="tip-one-column-data-frame">
+</article></slide><slide class=""><hgroup><h2>Tip: One Column Data Frame</h2></hgroup><article  id="tip-one-column-data-frame" class="smaller ">
 
 <p>When selecting one column from a data frame, R will convert the returned object to a vector.</p>
 
@@ -969,7 +869,7 @@ tmp</pre>
 
 <pre >## [1] &quot;data.frame&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Subsetting with Logical Operators</h2></hgroup><article  class="smaller " id="subsetting-with-logical-operators">
+</article></slide><slide class=""><hgroup><h2>Subsetting with Logical Operators</h2></hgroup><article  id="subsetting-with-logical-operators" class="smaller ">
 
 <p>You can subset using logical vectors. For example, there are 7764 rows in the <code>directory</code> data frame loaded from IPEDS. You can pass a logical vector of length 7764 where <code>TRUE</code> indicates to return the row and <code>FALSE</code> to not. For example, we wish to return the row with Excelsior College:</p>
 
@@ -987,7 +887,7 @@ length(row)</pre>
 ##       chftitle    gentele    faxtele       ein  opeid opeflag           webaddr
 ## 2783 President 5184648500 5184648777 141599643 283400       1 www.excelsior.edu</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>which</code></h2></hgroup><article  class="smaller " id="which">
+</article></slide><slide class=""><hgroup><h2><code>which</code></h2></hgroup><article  id="which" class="smaller ">
 
 <p>The <code>which</code> command will return an <code>integer</code> vector with the positions within the <code>logical</code> vector that are <code>TRUE</code>.</p>
 
@@ -1002,7 +902,7 @@ length(row)</pre>
 ##       chftitle    gentele    faxtele       ein  opeid opeflag           webaddr
 ## 2783 President 5184648500 5184648777 141599643 283400       1 www.excelsior.edu</pre>
 
-</article></slide><slide class=""><hgroup><h2>Logical Operators</h2></hgroup><article  class="smaller " id="logical-operators">
+</article></slide><slide class=""><hgroup><h2>Logical Operators</h2></hgroup><article  id="logical-operators" class="smaller ">
 
 <ul>
 <li><code>!a</code> - TRUE if a is FALSE</li>
@@ -1025,7 +925,7 @@ length(row)</pre>
 <li><code>isTRUE(a)</code> - TRUE if a is TRUE</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Side Note: Operators are Functions</h2></hgroup><article  class="smaller " id="side-note-operators-are-functions">
+</article></slide><slide class=""><hgroup><h2>Side Note: Operators are Functions</h2></hgroup><article  id="side-note-operators-are-functions" class="smaller ">
 
 <p>All operations (e.g. <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>[</code>, <code>&lt;-</code>) are functions.</p>
 
@@ -1043,7 +943,7 @@ length(row)</pre>
 
 <p>You can redefine these functions, but probably not a good idea ;-)</p>
 
-</article></slide><slide class=""><hgroup><h2>Sorting Data</h2></hgroup><article  class="smaller " id="sorting-data">
+</article></slide><slide class=""><hgroup><h2>Sorting Data</h2></hgroup><article  id="sorting-data" class="smaller ">
 
 <p>The <code>order</code> function will take one or more vectors (usually in the form of a data frame) and return an integer vector indicating the new order. There are two parameters to adjust where <code>NA</code>s are placed (<code>na.last=FALSE</code>) and whether to sort in increasing or decreasing order (<code>decreasing=FALSE</code>).</p>
 
@@ -1062,7 +962,7 @@ length(row)</pre>
 <pre >##  [1] &quot;z&quot; &quot;y&quot; &quot;x&quot; &quot;w&quot; &quot;v&quot; &quot;u&quot; &quot;t&quot; &quot;s&quot; &quot;r&quot; &quot;q&quot; &quot;p&quot; &quot;o&quot; &quot;n&quot; &quot;m&quot; &quot;l&quot; &quot;k&quot; &quot;j&quot; &quot;i&quot; &quot;h&quot; &quot;g&quot; &quot;f&quot; &quot;e&quot; &quot;d&quot; &quot;c&quot;
 ## [25] &quot;b&quot; &quot;a&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Reshaping Data (melting)</h2></hgroup><article  class="smaller " id="reshaping-data-melting">
+</article></slide><slide class=""><hgroup><h2>Reshaping Data (melting)</h2></hgroup><article  id="reshaping-data-melting" class="smaller ">
 
 <p>Data is often said to be in one of two formats: wide or long. The <code>mass</code> data frame is currently in a wide format where each variable is a separate column. However, there are certain analyses that will require the data to be in a long format. In a long format, we would have two columns to represent all the items (one for the item name, one for value), plus any additional identity variables. The <code>melt</code> command will convert a wide table to a long table.</p>
 
@@ -1081,7 +981,7 @@ head(mass.melted, n=4)</pre>
 
 <pre >## [1] 826</pre>
 
-</article></slide><slide class=""><hgroup><h2>Reshaping Data (casting)</h2></hgroup><article  class="smaller " id="reshaping-data-casting">
+</article></slide><slide class=""><hgroup><h2>Reshaping Data (casting)</h2></hgroup><article  id="reshaping-data-casting" class="smaller ">
 
 <p>To convert a long table to a wide table, use the <code>dcast</code> function</p>
 
@@ -1098,7 +998,7 @@ head(mass.casted); nrow(mass.casted)</pre>
 
 <pre >## [1] 59</pre>
 
-</article></slide><slide class=""><hgroup><h2>Removing Columns</h2></hgroup><article  class="smaller " id="removing-columns">
+</article></slide><slide class=""><hgroup><h2>Removing Columns</h2></hgroup><article  id="removing-columns" class="smaller ">
 
 <p>To remove a single column from a data frame, simply assign to <code>NULL</code> to the column value.</p>
 
@@ -1113,7 +1013,7 @@ head(mass)</pre>
 ## 5 Female  4  5  5  3  3  3  4  4  4   1   4   1   2   4 Summer 2014
 ## 6 Female  5  2  5  1  5  1  1  5  2   3   2   4   4   1 Summer 2014</pre>
 
-</article></slide><slide class=""><hgroup><h2>Renaming Columns</h2></hgroup><article  class="smaller " id="renaming-columns">
+</article></slide><slide class=""><hgroup><h2>Renaming Columns</h2></hgroup><article  id="renaming-columns" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>names(mass) # Get the current names</pre>
 
@@ -1136,7 +1036,7 @@ head(mass)</pre>
            &#39;Mathematics makes me feel confused.&#39;)
 names(mass) &lt;- c(&#39;Gender&#39;, items, &#39;Term&#39;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (subsetting)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-subsetting">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (subsetting)</h2></hgroup><article  id="example-sat-and-first-year-retention-subsetting" class="smaller ">
 
 <p>In this example, we wish to explore the relationship between SAT scores and first year retention as measures at the institutional level. These data are part of the IPEDS data collection, but are collected in different surveys. The first step is to subset the data frames so we are working with fewer columns. This is not necessary, but simplifies the analysis.</p>
 
@@ -1150,7 +1050,7 @@ admissions &lt;- admissions[,c(&#39;unitid&#39;, &#39;admcon1&#39;, &#39;admcon2
                            &#39;actcm25&#39;, &#39;actcm75&#39;, &#39;acten25&#39;, &#39;acten75&#39;, &#39;actmt25&#39;, 
                            &#39;actmt75&#39;, &#39;actwr25&#39;, &#39;actwr75&#39;)]</pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (converting factors)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-converting-factors">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (converting factors)</h2></hgroup><article  id="example-sat-and-first-year-retention-converting-factors" class="smaller ">
 
 <p>Next, we will recode the variables that indicate whether SAT scores are required for admission.</p>
 
@@ -1163,7 +1063,7 @@ admissions$admcon2 &lt;- factor(admissions$admcon2, levels=c(1,2,3,4,-1,-2),
 admissions$admcon7 &lt;- factor(admissions$admcon7, levels=c(1,2,3,4,-1,-2), 
                             labels=admissionsLabels)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (renaming variables)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-renaming-variables">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (renaming variables)</h2></hgroup><article  id="example-sat-and-first-year-retention-renaming-variables" class="smaller ">
 
 <p>Next, rename the variables to more understandable names.</p>
 
@@ -1180,7 +1080,7 @@ names(admissions) &lt;- c(&quot;unitid&quot;, &quot;UseHSGPA&quot;, &quot;UseHSR
                       &quot;ACTEnglish25&quot;, &quot;ACTEnglish75&quot;, &quot;ACTMath25&quot;, &quot;ACTMath75&quot;, 
                       &quot;ACTWriting25&quot;, &quot;ACTWriting75&quot;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (merging)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-merging">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (merging)</h2></hgroup><article  id="example-sat-and-first-year-retention-merging" class="smaller ">
 
 <p>We need to merge the three data frames to a single data frame. The <code>merge</code> function will merge, or join, two data frames on one or more columns. In this example schools that do not appear in all three data will not appear in the final data frame. To control how data frames are merge, see the <code>all</code>, <code>all.x</code>, and <code>all.y</code> parameters of the <code>merge</code> function (hint: works like outer joins in SQL).</p>
 
@@ -1192,7 +1092,7 @@ ret &lt;- merge(ret, retention, by=&quot;unitid&quot;)</pre>
 <pre class = 'prettyprint lang-r'>ret2 &lt;- ret[ret$UseAdmissionTestScores %in% 
             c(&#39;Required&#39;, &#39;Recommended&#39;, &#39;Neither requiered nor recommended&#39;),] </pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (converting numeric columns)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-converting-numeric-columns">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (converting numeric columns)</h2></hgroup><article  id="example-sat-and-first-year-retention-converting-numeric-columns" class="smaller ">
 
 <p>IPEDS uses periods (<code>.</code>) to represent missing values. As a result, R will treat the column as a <code>character</code> column so we need to convert them to <code>numeric</code> columns. The <code>as.numeric</code> function will do this and any value that is not numeric (<code>.</code>s in this example) will be treated as missing values (i.e. <code>NA</code>).</p>
 
@@ -1202,7 +1102,7 @@ ret2$SATWriting75 &lt;- as.numeric(ret2$SATWriting75)
 ret2$SATWriting25 &lt;- as.numeric(ret2$SATWriting25)
 ret2$NumSATScores &lt;- as.integer(ret2$NumSATScores)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (calculating)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-calculating">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (calculating)</h2></hgroup><article  id="example-sat-and-first-year-retention-calculating" class="smaller ">
 
 <p>IPEDS only provides the 25th and 75th percentile in SAT and ACT scores. We will use the mean of these two values as a proxy for the mean.</p>
 
@@ -1212,7 +1112,7 @@ ret2$SATTotal &lt;- ret2$SATMath + ret2$SATWriting
 ret2$AcceptanceTotal &lt;- as.numeric(ret2$AdmissionsTotal) / as.numeric(ret2$ApplicantsTotal)
 ret2$UseAdmissionTestScores &lt;- as.factor(as.character(ret2$UseAdmissionTestScores))</pre>
 
-</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (final data frame)</h2></hgroup><article  class="smaller " id="example-sat-and-first-year-retention-final-data-frame">
+</article></slide><slide class=""><hgroup><h2>Example: SAT and First Year Retention (final data frame)</h2></hgroup><article  id="example-sat-and-first-year-retention-final-data-frame" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>str(ret2)</pre>
 
@@ -1260,7 +1160,7 @@ ret2$UseAdmissionTestScores &lt;- as.factor(as.character(ret2$UseAdmissionTestSc
 ##  $ SATTotal              : num  NA NA NA NA 1110 NA 1160 NA NA NA ...
 ##  $ AcceptanceTotal       : num  0.899 0.867 0.806 0.513 0.565 ...</pre>
 
-</article></slide><slide class=""><hgroup><h2>Miscellaneous Functions</h2></hgroup><article  class="smaller " id="miscellaneous-functions">
+</article></slide><slide class=""><hgroup><h2>Miscellaneous Functions</h2></hgroup><article  id="miscellaneous-functions" class="smaller ">
 
 <ul>
 <li><code>paste</code> and <code>paste0</code> - concatenate strings (<code>paste0</code> uses <code>sep=&#39;&#39;</code> by default)</li>
