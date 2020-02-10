@@ -18,7 +18,8 @@
       
       <guid>/assignments/homework/</guid>
       <description>Homework 1 - DAACS Due January 27th
-Go to demo.daacs.net, create an account, and complete the self-regulated learning and mathematics assessments. When done, enter your name and email address used to create an account on the DAACS website below. This is an ungraded assignment (i.e. you get credit for completing the assessments, not for the results). Click here to submit</description>
+Go to demo.daacs.net, create an account, and complete the self-regulated learning and mathematics assessments. When done, enter your name and email address used to create an account on the DAACS website below. This is an ungraded assignment (i.e. you get credit for completing the assessments, not for the results). Click here to submit
+Homework 2 - Linear Regression [Click here]() to download a PDF of the assignment and [here for an Rmarkdown template]().</description>
     </item>
     
     <item>
@@ -28,7 +29,9 @@ Go to demo.daacs.net, create an account, and complete the self-regulated learnin
       
       <guid>/assignments/labs/</guid>
       <description>Lab 1 - Intro to R and RStudio Due February 3rd
-Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd file, read, and complete the questions throughout the document. Click here to submit lab 1.</description>
+Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd file, read, and complete the questions throughout the document. Click here to submit lab 1.
+Lab 8 - Linear Regression You can start the lab by running the following command in RStudio:
+DATA606::startLab(&#39;Lab8&#39;)  Due February 24th</description>
     </item>
     
     <item>

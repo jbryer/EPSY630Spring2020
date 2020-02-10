@@ -16,7 +16,7 @@ Go to [demo.daacs.net](https://demo.daacs.net), create an account, and complete 
 
 ## Homework 2 - Linear Regression
 
-[Click here]() to download a PDF of the assignment and [here for an Rmarkdown template]().
+[Click here](https://github.com/jbryer/EPSY630Spring2020/blob/master/Homework/Homework8.pdf) to download a PDF of the assignment and [here for an Rmarkdown template]().
 
 **Due February 17th**
 
