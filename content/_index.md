@@ -6,7 +6,7 @@ publishdate: 2018-11-23T15:26:15Z
 
 ## EPSY 630: Statistics II
 
-***Instructor:***		Jason Bryer, Ph.D. (jbryer@albany.edu)   
+***Instructor:***		Jason Bryer, Ph.D. ([jbryer@albany.edu](mailto:jbryer@albany.edu))   
 ***Class Time:*** 		Mondays 4:15 p.m. - 7:05  p.m.  
 ***Class Location:***  	Catskill B060  
 ***Grading:*** 			3 credits, Graded  
