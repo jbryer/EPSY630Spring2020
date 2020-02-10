@@ -15,10 +15,10 @@ weight: 2
 
 ## Lab 8 - Linear Regression
 
+**Due February 24th**
+
 You can start the lab by running the following command in RStudio:
 
 ```
 DATA606::startLab('Lab8')
 ```
-
-**Due February 24th**
