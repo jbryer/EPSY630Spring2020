@@ -14,3 +14,9 @@ weight: 1
 
 Go to [demo.daacs.net](https://demo.daacs.net), create an account, and complete the self-regulated learning and mathematics assessments. When done, enter your name and email address used to create an account on the DAACS website below. This is an ungraded assignment (i.e. you get credit for completing the assessments, not for the results). [Click here to submit](https://forms.gle/ts3GFQbFYJny1Lbp8)
 
+## Homework 2 - Linear Regression
+
+[Click here]() to download a PDF of the assignment and [here for an Rmarkdown template]().
+
+**Due February 17th**
+

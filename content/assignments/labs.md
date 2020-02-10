@@ -13,3 +13,12 @@ weight: 2
 
 [Click here](https://github.com/jbryer/EPSY630Spring2020/raw/master/Labs/Lab1.zip) to download the lab files. Once downloaded, open the `intro_to_r.Rmd` file, read, and complete the questions throughout the document. [Click here to submit lab 1](https://forms.gle/TsMZ67MxUCtvhopd9).
 
+## Lab 8 - Linear Regression
+
+You can start the lab by running the following command in RStudio:
+
+```
+DATA606::startLab('Lab8')
+```
+
+**Due February 24th**

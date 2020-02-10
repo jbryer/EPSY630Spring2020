@@ -2,6 +2,9 @@ library(likert)
 library(readxl)
 library(tidyverse)
 
+students <- readxl::read_excel('private/Gradebook-EPSY630-Spring2020.xlsx')
+table(students$`Program and Plan`) %>% as.data.frame
+
 results <- readxl::read_excel('course_data/Stats_Survey.xlsx') %>%
 	as.data.frame()
 
@@ -37,15 +40,12 @@ stats.items <- c('Descriptive Statistics',
 str(results)
 names(results)
 
-results$Gender <- factor(results$Gender, levels = c('M', 'F', 'N', 'P'),
-						 labels = c('Male', 'Female', 'Non-binary', 'N/A'))
-
 results$Level <- factor(results$Level, levels = c('M', 'D'),
 						labels = c("Master's", "Doctorate"))
 
 results$GradCourse <- results$GradCourse == 'Y'
 
-for(i in 3:16) {
+for(i in 2:15) {
 	results[,i] <- factor(results[,i],
 						  levels = 1:5,
 						  labels = c('Strongly Disagree', 'Disagree', 'Neutral',
@@ -53,7 +53,7 @@ for(i in 3:16) {
 						  ordered = TRUE)
 }
 
-for(i in 18:31) {
+for(i in 17:30) {
 	results[,i] <- factor(results[,i],
 						  levels = 1:5,
 						  labels = c('Not at all familiar',
@@ -74,7 +74,7 @@ table(results$Level) %>% print %>% prop.table
 table(results$Gender) %>% print %>% prop.table()
 
 ##### Math Anxiety Survey Scale
-mass.results <- results[,3:16]
+mass.results <- results[,2:15]
 names(mass.results) <- mass.items
 
 mass.likert <- likert(mass.results)
@@ -87,7 +87,7 @@ mass.likert2b <- likert(mass.results[,8:14], grouping = results$GradCourse)
 plot(mass.likert2b)
 
 ##### Statistical Topic Familiarity
-stats.results <- results[,18:31]
+stats.results <- results[,17:30]
 names(stats.results) <- stats.items
 
 stats.likert <- likert(stats.results)
