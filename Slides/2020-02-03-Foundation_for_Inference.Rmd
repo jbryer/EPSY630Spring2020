@@ -972,7 +972,7 @@ pt(2, df=10)
 
 <p class="forceBreak"></p>
 
-The `t.test` function will calculate a null hyphothesis test using the *t*-distribution.
+The `t.test` function will calculate a null hypothesis test using the *t*-distribution.
 
 ```{r}
 t.test(Math.SAT ~ Sex, data = sat)
