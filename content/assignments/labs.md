@@ -23,7 +23,7 @@ You can start the lab by running the following command in RStudio:
 DATA606::startLab('Lab8')
 ```
 
-[Click here to submit lab 1](https://forms.gle/z1LtKGLA4okeVrK88).
+[Click here to submit lab 8](https://forms.gle/z1LtKGLA4okeVrK88).
 
 
 ## Lab 9 - Multiple Regression
