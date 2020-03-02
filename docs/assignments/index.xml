@@ -28,11 +28,12 @@ Homework 2 - Inference for Numerical Data Due February 17th</description>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>/assignments/labs/</guid>
-      <description> Lab 1 - Intro to R and RStudio Due February 3rd
+      <description>Lab 1 - Intro to R and RStudio Due February 3rd
 Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd file, read, and complete the questions throughout the document. Click here to submit lab 1.
 Lab 8 - Linear Regression Due February 24th
 You can start the lab by running the following command in RStudio:
-DATA606::startLab(&#39;Lab8&#39;)  </description>
+DATA606::startLab(&#39;Lab8&#39;)  Click here to submit lab 1.
+Lab 9 - Multiple Regression Due March 23rd</description>
     </item>
     
     <item>
