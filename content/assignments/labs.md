@@ -28,7 +28,7 @@ DATA606::startLab('Lab8')
 
 ## Lab 9 - Multiple Regression
 
-**Due March 23rd**
+**Due March 30rd**
 
 You can start the lab by running the following command in RStudio:
 

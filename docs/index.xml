@@ -42,7 +42,7 @@ Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd f
 Lab 8 - Linear Regression Due February 24th
 You can start the lab by running the following command in RStudio:
 DATA606::startLab(&#39;Lab8&#39;)  Click here to submit lab 8.
-Lab 9 - Multiple Regression Due March 23rd</description>
+Lab 9 - Multiple Regression Due March 30rd</description>
     </item>
     
     <item>
@@ -101,7 +101,7 @@ Creating Equations with Daum Equation Editor Occasionally you will need to type 
     <item>
       <title>Schedule</title>
       <link>/schedule/</link>
-      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>/schedule/</guid>
       <description>This schedule is tentative and is subject to change. Last updated March 02, 2020 05:51PM

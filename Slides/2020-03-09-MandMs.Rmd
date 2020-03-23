@@ -1,0 +1,344 @@
+---
+title: "Central Limit Theorem"
+subtitle: "EPSY 630 - Spring 2020"
+author: "Jason Bryer, Ph.D."
+institute: "University at Albany"
+date: "March 9, 2020"
+output:
+  ioslides_presentation:
+    self_contained: true
+    widescreen: true
+    smaller: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, error = FALSE, fig.align='center') 
+options(gargle_oauth_email = "jason.bryer@gmail.com")
+library(ggplot2)
+library(googlesheets4)
+library(DT)
+library(reshape2)
+library(psych)
+
+colors <- c(Blue = 'blue',
+			Brown = 'brown', 
+			Green = 'green3', 
+			Orange = 'orange', 
+			Red = 'red', 
+			Yellow = 'yellow2')
+# Google Form: https://forms.gle/ev7vBVsN8UkcoftK8
+
+# Results
+results_url <- 'https://docs.google.com/spreadsheets/d/14Jp-4qsx_PZz5jzvxrId2YUiakxYX5H546wtjYN1UYU/edit?usp=sharing'
+```
+
+
+
+## M&M's
+
+Directions:
+
+* Everyone pair off (one group of 3 is fine).
+* Everyone will get three bags of M&M's. For each bag:
+	* Count the number of each color. Enter your results here: https://forms.gle/ev7vBVsN8UkcoftK8
+* As a pair, calculate the mean, standard deviation, and standard error for the total number of M&M's in each bag (i.e. n = 6).
+
+<hr />
+
+
+$$\hat{\mu} = \frac{\#\ of\ M\&Ms}{\#\ of\ M\&M\ bags}$$
+$${ s }^{ 2 }=\sum _{ i=1 }^{ n }{ \frac { { \left( { x }_{ i }-\bar { x }  \right)  }^{ 2 } }{ n-1 }  }$$
+$$s=\sqrt{s^2}$$
+$$SE = \frac{s}{\sqrt{n}}$$
+
+
+## Results
+
+```{r}
+results <- googlesheets4::read_sheet(results_url)
+results[is.na(results$Red),]$Red <- 0
+results[is.na(results$Green),]$Green <- 0
+results[is.na(results$Orange),]$Orange <- 0
+results[is.na(results$Blue),]$Blue <- 0
+results$Total <- apply(results[,3:ncol(results)], 1, FUN = sum)
+```
+
+```{r, echo=FALSE, results='asis'}
+datatable(results[,-1], rownames = FALSE)
+```
+
+## Distribution of number of M&M's per bag
+
+```{r}
+ggplot(results, aes(x = Total)) + geom_histogram(binwidth = 1)
+```
+
+## Standard Error
+
+```{r}
+(se <- sd(results$Total) / sqrt(nrow(results)))
+```
+
+
+```{r, echo = FALSE}
+x <- seq(0, 20, length.out=100)
+df <- with(results, data.frame(x = x, y = dnorm(x, mean(Total), sd(Total))))
+ggplot(results, aes(x = Total)) + 
+	# geom_histogram(binwidth = 1) +
+	geom_line(data = df, aes(x = x, y = y), color = "blue") +
+	geom_area(data = subset(df, 
+							x > mean(results$Total) - 1.96 * sd(results$Total) &
+							x < mean(results$Total) + 1.96 * sd(results$Total)),
+			  aes(x=x, y=y), fill="blue") +
+	geom_area(data = subset(df, 
+							x > mean(results$Total) - 1.96 * se &
+							x < mean(results$Total) + 1.96 * se),
+			  aes(x=x, y=y), fill="red") +
+	
+	xlim(0, 20)
+```
+
+
+## Descriptive Statistics
+
+```{r}
+mean(results$Total)
+sd(results$Total)
+results.tab <- data.frame(Color = names(colors),
+						  Count = unname(apply(results[,names(colors)], 2, sum)),
+						  stringsAsFactors = FALSE)
+results.tab$Observed <- results.tab$Count / sum(results.tab$Count)
+results.tab
+```
+
+## Distribution of Colors
+
+```{r}
+ggplot(results.tab, aes(x = Color, y = Count, fill = Color, label = Count)) +
+	geom_bar(stat = 'identity') + scale_fill_manual(NULL, values = colors) +
+	geom_text(vjust = -0.5) + ylab('Count') + xlab('M&M Color') + theme(legend.position = 'none')
+```
+
+
+## Expected Outcomes
+
+According to the manufacturer of M&M candy, the color distribution for plain chocolate M&Ms is 13% brown, 13% red, 14% yellow, 24% blue, 20% orange, and 16% green. Do the M&Ms in our sample suggest that the color distribution is different?
+
+```{r}
+expected <- data.frame(
+	Color = c('Blue', 'Brown', 'Green', 'Orange', 'Red', 'Yellow'),
+	Expected = c(.24, .13, .16, .20, .13, .14),
+	Expected_Count = c(.24, .13, .16, .20, .13, .14) * sum(results.tab$Count),
+	stringsAsFactors = FALSE
+)
+expected
+```
+
+##  Central limit theoreom for proportions
+
+Sample proportions will be nearly normally distributed with mean equal to the population mean, *p*, and standard error equal to $\sqrt{\frac{p(1-p)}{n}}$.
+
+$$\hat { p } \sim N\left( mean=p,SE=\sqrt { \frac { p(1-p) }{ n }  }  \right) $$
+
+This is true given the following conditions:
+
+* independent observations
+* at least 10 successes and 10 failures
+
+## How many red M&M's should we expect?
+
+```{r}
+red_m_and_m <- results$Red / results$Total
+head(red_m_and_m)
+(p <- mean(red_m_and_m))
+(se <- sqrt(p * (1 - p) / length(red_m_and_m) ))
+c(p - 1.96 * se, p + 1.96 * se)
+```
+
+## Distribution of Red M&M's
+
+```{r}
+qplot(red_m_and_m, bins = 10) + ggtitle("Distribution of Proportion of Red M&M's") + xlab('Proportion')
+```
+
+## Weldon's dice
+
+* Walter Frank Raphael Weldon (1860 - 1906), was an English evolutionary biologist and a founder of biometry. He was the joint founding editor of Biometrika, with Francis Galton and Karl Pearson.
+* In 1894, he rolled 12 dice 26,306 times, and recorded the number of 5s or 6s (which he considered to be a success).
+	* It was observed that 5s or 6s occurred more often than expected, and Pearson hypothesized that this was probably due to the construction of the dice. Most inexpensive dice have hollowed-out pips, and since opposite sides add to 7, the face with 6 pips is lighter than its opposing face, which has only 1 pip.
+
+## Labby's dice
+
+In 2009, Zacariah Labby (U of Chicago), repeated Weldon’s experiment using a homemade dice-throwing, pip counting machine. http:// www.youtube.com/ watch?v= 95EErdouO2w
+
+* The rolling-imaging process took about 20 seconds per roll.
+	* Each day there were ∼150 images to process manually.
+	* At this rate Weldon’s experiment was repeated in a little more than six full days.
+	* Recommended reading: http://galton.uchicago.edu/about/docs/labby09dice.pdf
+
+![](images/labbyPipCounts.png)
+
+## Summarizing Labby's results
+
+The table below shows the observed and expected counts from Labby's experiment.
+
+
+| Outcome   | Observed	  | Expected    |
+|-----------|-------------|-------------|
+| 1	        | 53,222      | 52,612      | 
+| 2	        | 52,118      | 52,612      | 
+| 3	        | 52,465      | 52,612      | 
+| 4	        | 52,338      | 52,612      | 
+| 5	        | 52,244      | 52,612      | 
+| 6	        | 53,285      | 52,612      | 
+| Total     | 315,672     | 315,672     |
+
+## Setting the hypotheses
+
+Do these data provide convincing evidence of an inconsistency between the observed and expected counts?
+
+* `$H_0$`: There is no inconsistency between the observed and the expected counts. The observed counts follow the same distribution as the expected counts.
+
+* `$H_A$`: There is an inconsistency between the observed and the expected counts. The observed counts **do not** follow the same distribution as the expected counts. There is a bias in which side comes up on the roll of a die.
+
+## Evaluating the hypotheses
+
+* To evaluate these hypotheses, we quantify how different the observed counts are from the expected counts. 
+* Large deviations from what would be expected based on sampling variation (chance) alone provide strong evidence for the alternative hypothesis.
+* This is called a \hl{goodness of fit} test since we're evaluating how well the observed data fit the expected distribution.
+
+## Anatomy of a test statistic
+
+* The general form of a test statistic is:
+
+$$\frac{\text{point estimate} - \text{null value}}{\text{SE of point estimate}}$$
+
+* This construction is based on 
+	1. identifying the difference between a point estimate and an expected value if the null hypothesis was true, and 
+	2. standardizing that difference using the standard error of the point estimate. 
+
+* These two ideas will help in the construction of an appropriate test statistic for count data.
+
+
+## Chi-Squared
+
+When dealing with counts and investigating how far the observed counts are from the expected counts, we use a new test statistic called the chi-square ($\chi^2$) statistic.
+
+$$\chi^2 = \sum_{i = 1}^k \frac{(O - E)^2}{E} \qquad \text{where $k$ = total number of cells}$$
+
+##
+
+
+| Outcome   | Observed	  | Expected    | $\frac{(O - E)^2}{E}$
+|-----------|-------------|-------------|-----------------------|
+| 1	        | 53,222      | 52,612      | $\frac{(53,222 - 52,612)^2}{52,612} = 7.07$ |
+| 2	        | 52,118      | 52,612      | $\frac{(52,118 - 52,612)^2}{52,612} = 4.64$ |
+| 3	        | 52,465      | 52,612      | $\frac{(52,465 - 52,612)^2}{52,612} = 0.41$ |
+| 4	        | 52,338      | 52,612      | $\frac{(52,338 - 52,612)^2}{52,612} = 1.43$ |
+| 5	        | 52,244      | 52,612      | $\frac{(52,244 - 52,612)^2}{52,612} = 2.57$ |
+| 6	        | 53,285      | 52,612      | $\frac{(53,285 - 52,612)^2}{52,612} = 8.61$ |
+| Total     | 315,672     | 315,672     | 24.73 |
+
+
+## Chi-Squared Distribution
+
+Squaring the difference between the observed and the expected outcome does two things:
+
+*  Any standardized difference that is squared will now be positive.
+*  Differences that already looked unusual will become much larger after being squared.
+
+In order to determine if the $\chi^2$ statistic we calculated is considered unusually high or not we need to first describe its distribution.
+
+* The chi-square distribution has just one parameter called **degrees of freedom (df)**, which influences the shape, center, and spread of the distribution.
+
+```{r, echo=FALSE, fig.align='center', fig.height=3}
+COL <- c('#225588', '#558822CC', '#88225599', '#88552266')
+
+par(mar=c(2, 0.5, 0.25, 0.5), mgp=c(2.1, 0.8, 0), las=1)
+x <- c(0, seq(0.0000001, 40, 0.05))
+DF <- c(2.0000001, 4, 9)
+y <- list()
+for(i in 1:length(DF)){
+	y[[i]] <- dchisq(x, DF[i])
+}
+plot(0, 0, type='n', xlim=c(0, 25), ylim=range(c(y, recursive=TRUE)), axes=FALSE)
+for(i in 1:length(DF)){
+	lines(x, y[[i]], lty=i, col=COL[i], lwd=3)
+}
+abline(h=0)
+axis(1)
+
+legend('topright', col=COL, lty=1:4, legend=paste(round(DF) ), title='Degrees of Freedom', cex=1, lwd = 3)
+```
+
+## Degrees of freedom for a goodness of fit test
+
+When conducting a goodness of fit test to evaluate how well the observed data follow an expected distribution, the degrees of freedom are calculated as the number of cells ($k$) minus 1.
+
+$$df = k - 1$$
+
+For dice outcomes, $k = 6$, therefore $df = 6 - 1 = 5$
+
+
+```{r, echo=FALSE, fig.height=3}
+openintro::ChiSquareTail(df = 5, U = 24.67, xlim = c(0, 30))
+```
+
+p-value = $P(\chi^2_{df = 5} > 24.67)$ is less than 0.001
+
+
+## Turns out...
+
+* The 1-6 axis is consistently shorter than the other two (2-5 and 3-4), thereby supporting the hypothesis that the faces with one and six pips are larger than the other faces.
+* Pearson's claim that 5s and 6s appear more often due to the carved-out pips is not supported by these data.
+* Dice used in casinos have flush faces, where the pips are filled in with a plastic of the same density as the surrounding material and are precisely balanced.
+
+
+
+## Chi-Squared for M&M's
+
+```{r}
+df <- 5 # 6 colors (or groups) minus 1
+results.tab <- merge(results.tab, expected, by = 'Color')
+(chi2 <- sum( (results.tab$Count - results.tab$Expected_Count)^2 / results.tab$Expected_Count ) )
+```
+
+
+## Observed vs. Expected Distributions
+
+```{r, echo=FALSE}
+results.tab.melt <- melt(results.tab[,-c(2,5)], id.vars = 'Color')
+ggplot(results.tab.melt, aes(x = Color, y = value, group = variable, fill = variable)) +
+	geom_bar(stat = 'identity', position = 'dodge') + scale_fill_hue('Group') +
+	ylab('Percent') + xlab('M&M Color')
+```
+
+
+## Chi-Squared Distribution
+
+```{r}
+dchisq(chi2, df = df)
+qchisq(.95, df = df) # Chi-squared would need to reject the null hypothesis
+```
+
+## Recap: p-value for a chi-square test
+
+* The p-value for a chi-square test is defined as the tail area **above** the calculated test statistic.
+
+** This is because the test statistic is always positive, and a higher test statistic means a stronger deviation from the null hypothesis.
+
+
+```{r, echo=FALSE}
+openintro::ChiSquareTail(df = 6, U = 10, showdf = FALSE, axes = FALSE, xlim = c(0, 15) )
+text(x = 12, y = 0.005, "p-value", col = "red", cex = 1)
+```
+
+
+
+FALSE, fig.height=3}
+openintro::ChiSquareTail(df = 5, U = chi2)
+```
+
+

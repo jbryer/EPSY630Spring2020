@@ -27,4 +27,17 @@ Go to [demo.daacs.net](https://demo.daacs.net), create an account, and complete 
 
 [Click here](https://github.com/jbryer/EPSY630Spring2020/blob/master/Homework/Homework8.pdf) to download a PDF of the assignment and [here for an Rmarkdown template](https://raw.githubusercontent.com/jbryer/EPSY630Spring2020/master/Homework/Homework8.Rmd) (right click and choose save link as).
 
+## Homework 4 - ANOVA
+
+**Due March 30th**
+
+From the OpenIntro textbook, chapter 7 (starting page 295): 7.38, 7.40, 7.42
+
+For question 7.42, you can download the date file [here](https://github.com/jbryer/EPSY630Spring2020/blob/master/course_data/gss2010.Rda?raw=true). The following R code will subset the full data frame to include the two variables necessary and recode the degree level variable.
+
+```
+load('gss2010.Rda')
+gss <- gss2010[, c('degree', 'hrs1')]
+levels(gss) <- c("Less than HS","HS", "Jr Coll", "Bachelor's", "Graduate")
+```
 

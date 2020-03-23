@@ -1,0 +1,357 @@
+---
+title: "Analysis of Variance (ANOVA)"
+author: Jason Bryer, Ph.D.
+date: March 23, 2020
+knit: (function(inputFile, encoding) { input.dir <- normalizePath(dirname(inputFile)); rmarkdown::render(input = inputFile, encoding = encoding, quiet=FALSE, output_file = paste0(input.dir,'/../docs/slides/', tools::file_path_sans_ext(basename(inputFile)), '.html')); })
+output:
+  ioslides_presentation:
+    self_contained: true
+    widescreen: true
+    smaller: true
+editor_options: 
+  chunk_output_type: console
+---
+
+<style>
+div.footnotes {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  width: 80%;
+  font-size: 0.6em;
+}
+.forceBreak { -webkit-column-break-after: always; break-after: column; }
+</style>
+<!-- Use for forced two column break: <p class="forceBreak"></p> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('slide:not(.backdrop):not(.title-slide)').append('<div class=\"footnotes\">');
+
+  $('footnote').each(function(index) {
+    var text  = $(this).html();
+    var fnNum = (index+1).toString();
+    $(this).html(fnNum.sup());
+
+    var footnote   = fnNum + '. ' + text + '<br/>';
+    var oldContent = $(this).parents('slide').children('div.footnotes').html();
+    var newContent = oldContent + footnote;
+    $(this).parents('slide').children('div.footnotes').html(newContent);
+  });
+});
+</script>
+
+<style>
+.codefont pre {
+    font-size: 12px;
+    line-height: 10px;
+}
+</style>
+
+<div class="notes">
+Documentation on using ioslides is available here:
+http://rmarkdown.rstudio.com/ioslides_presentation_format.html
+Some slides are adopted (or copied) from OpenIntro: https://www.openintro.org/
+</div>
+
+```{r setup, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, error = FALSE, fig.align = 'center')
+
+set.seed(2112)
+library(ggplot2)
+library(openintro)
+library(DATA606)
+library(reshape2)
+library(psych)
+library(granova)
+library(tidyverse)
+library(latex2exp)
+
+par(mar=c(2.5,1,2,1))
+
+```
+
+
+## Analysis of Variance (ANOVA)
+
+The goal of ANOVA is to test whether there is a discernible difference between the means of three or more groups.
+
+#### Example
+
+Is there a difference between washing hands with:  water only, regular soap, antibacterial soap (ABS), and antibacterial spray (AS)?
+
+* Each tested with 8 replications
+* Treatments randomly assigned
+
+For ANOVA:
+
+* The means all differ.
+* Is this just natural variability?
+* Null hypothesis:  All the means are the same.
+* Alternative hypothesis:  The means are not all the same.
+
+
+## Hand Washing Comparison {.flexbox .vcenter}
+
+```{r}
+hand <- read.csv('../course_data/Hand_washing.csv')
+head(hand, n = 10)
+```
+
+## Hand Washing Comparison {.flexbox .vcenter}
+
+```{r, tidy=FALSE}
+(grand.mean <- mean(hand$Bacterial.Counts))
+hands.tab <- describeBy(hand$Bacterial.Counts, group = hand$Method, mat = TRUE)[,c(2,4,5,6)]
+hands.tab$Var <- hands.tab$sd^2
+print(hands.tab, row.names=FALSE)
+```
+
+
+## Hand Washing Comparison {.flexbox .vcenter}
+
+
+```{r hand-boxplot, echo=FALSE, fig.width=7, fig.height=5, tidy=FALSE}
+ggplot(hand, aes(x=Method, y=Bacterial.Counts)) + 
+	geom_hline(yintercept = mean(hand$Bacterial.Counts), color = 'maroon', size = 2) +
+	geom_boxplot(outlier.alpha = 0, width = 0.5) +
+	geom_point(alpha = 0.5) + 
+	geom_point(data = hands.tab, aes(x = group1, y = mean), color = 'blue', size = 5) +
+	geom_rug()
+```
+
+
+## Is washing type all the same?
+
+ANOVA is used to assess whether the mean of the outcome variable is different for different levels of a categorical variable.
+
+$H_0$: The mean outcome is the same across all categories,
+
+$$\mu_1 = \mu_2 = \mu_3 = \mu_4$$
+
+where $u_i$ represents the mean of the outcome for observations in categori *i*.
+
+$H_A$: At least one mean is different than the others.
+
+We will use a new test statistic, *F*:
+
+$$F = \frac{\text{variability between groups}}{\text{variability within groups}}$$
+
+## Conditions
+
+1. The observations should be independent within and between groups
+	* If the data are a simple random sample from less than 10% of the population, this condition is satisfied.
+	* Carefully consider whether the data may be independent (e.g. no pairing).
+	* Always important, but sometimes difficult to check.
+2. The observations within each group should be nearly normal.
+	* Especially important when the sample sizes are small. How do we check for normality?
+3. The variability across the groups should be about equal (Equal Variance Assumption).
+	* Especially important when the sample sizes differ between groups.
+
+
+## Degrees of Freedom
+
+With ANOVA, we have different degrees of freedom depending on which component we are looking at:
+
+* groups: $df_G = k - 1$
+* total: $df_T = n - 1$
+* error: $df_E = df_T - df_G$
+
+For our handwashing example, our degrees of freedom are:
+
+* $df_G = 4 - 1 = 3$
+* $df_T = 32 - 1 = 31$
+* $df_E = 31 - 3 = 28$
+
+
+## Sum of Squares Between Groups $SS_G$
+
+Measures the variablity between groups.
+
+$$SS_G = \sum_{i=0}^{k}n_i(\bar{x_i}-\bar{x})^2$$
+
+where $n_i$ is each group size, $\bar{x_i}$ is the average for each group, $\bar{x}$ is the overall (grand) mean.
+
+```{r}
+hands.tab$SSG_part <- hands.tab$n * (hands.tab$mean - grand.mean)^2
+(SSG <- sum(hands.tab$SSG_part))
+```
+
+
+## Sum of Squares Total $SS_T$
+
+Measures the total variability:
+
+$$SS_T = \sum_{i=0}^{n}(x_i-\bar{x})^2$$
+
+where $x_i$ represents each observation in the dataset.
+
+```{r}
+(SST <- sum( (hand$Bacterial.Counts - grand.mean)^2 ))
+```
+
+## Sum of Squares Error $SS_E$
+
+Measures the variability within groups:
+
+$$SS_E = SS_T - SS_G$$
+
+```{r}
+(SSE <- SST - SSG)
+```
+
+
+## Mean Square
+
+Mean square is calculated as the sum of squares divided by the degrees of freedom.
+
+$$MS_G = \frac{SS_G}{k - 1}$$
+
+```{r}
+(MSG <- SSG / 3)
+```
+
+$$MS_E = \frac{SS_E}{df_G - df_T}$$
+
+```{r}
+(MSE <- SSE / 28)
+```
+
+
+## Test Statistic, F value
+
+The F statistic is the ratio of the between group and within group variability:
+
+$$F = \frac{\text{variability between groups}}{\text{variability within groups}} = \frac{MS_G}{MS_E}$$
+
+```{r}
+MSG / MSE
+```
+
+
+## Comparing $MS_G$ (between) and $MS_E$ (within)
+
+$MS_G$
+
+* Estimates $s^2$ if $H_0$ is true
+* Should be larger than $s^2$ if $H_0$ is false
+
+$MS_E$
+
+* Estimates $s^2$ whether $H_0$ is true or not
+* If $H_0$ is true, both close to $s^2$, so $MS_G$ is close to $MS_E$
+
+Comparing
+
+* If $H_0$ is true, $\frac{MS_G}{MS_E}$ should be close to 1
+* If $H_0$ is false, $\frac{MS_G}{MS_E}$ tends to be > 1
+
+
+## The F-Distribution 
+
+* How do we tell whether $\frac{MS_G}{MS_E}$ is larger enough to not be due just to random chance
+* $\frac{MS_G}{MS_E}$ follows the F-Distribution
+	* Numerator df:  k - 1 (k = number of groups)
+	* Denominator df:  k(n - 1)  
+	* n = # observations in each group
+* $F = \frac{MS_G}{MS_E}$ is called the F-Statistic.
+
+A Shiny App by Dr. Dudek to explore the F-Distribution: <a href='https://shiny.rit.albany.edu/stat/fdist/' window='_new'>https://shiny.rit.albany.edu/stat/fdist/</a>
+
+
+## The F-Distribution (cont.) {.flexbox .vcenter}
+
+```{r fdistribution, fig.width=7, fig.height=4, tidy=FALSE}
+df.numerator <- 4 - 1
+df.denominator <- 4 * (8 - 1)
+plot(function(x)(df(x,df1=df.numerator,df2=df.denominator)),
+	 xlim=c(0,5), xlab='x', ylab='f(x)', main='F-Distribution')
+```
+
+
+## Back to Bacteria
+
+* $MS_G = 9960.64$
+* $MS_E = 1410.14$
+* Numerator df = 4 - 1 = 3
+* Denominator df = 4(8 - 1) = 28.
+
+
+```{r}
+(f.stat <- 9960.64 / 1410.14)
+1 - pf(f.stat, 3, 28)
+```
+
+**P-value for $F_{3,28} = 0.0011$**
+
+The p-value is the probability of at least as large a ratio between the "between group" and "within group" variability, if in fact the means of all groups are equal. It's calculated as the area under the F distribution, with degrees of freedom $df_G$ and $df_E$, above the observed F statistic.
+
+
+## ANOVA in R
+
+```{r}
+aov.out <- aov(Bacterial.Counts ~ Method, data=hand)
+summary(aov.out)
+```
+
+
+## What Next? 
+
+* P-value large -> Nothing left to say
+* P-value small -> Which means are large and which means are small?
+* We can perform a t-test to compare two of them.
+* We assumed the standard deviations are all equal.
+* Use $s_p$, for pooled standard deviations.
+* Use the Students t-model, df = N - k.
+* If we wanted to do a t-test for each pair:
+	* P(Type I Error) = 0.05 for each test.
+	* Good chance at least one will have a Type I error.
+* **Bonferroni to the rescue!**
+
+## Bonferroni Adjustments
+
+We typically set our alpha level to 5% (i.e. 95% confidence). Doing a paired analysis, the critical value using the *t* distribution would be:
+
+```{r}
+(cv <- qt(0.05 / 2, 15))
+```
+
+
+
+However, if we want to do K paired comparisons but maintaine the same 95% confidence (i.e. Type I error rate), we need to split that 5% across each test (i.e. $\frac{0.05}{K}$). If there are *k* groups, then all possible pairs can be compared using:
+
+$$K = \frac{k(k-1)}{2}$$
+
+For our hand resulting example, this would now be our critical value from the *t* distribution:
+
+```{r}
+n.tests <- (4 * (4-1)) / 2
+(bcv <- qt((0.05 / n.tests) / 2, 15))
+```
+
+
+
+## Hand Washing Comparison (with Bonferroni CIs)
+
+```{r hand-boxplot2, echo=FALSE, fig.width=7, fig.height=5, tidy=FALSE}
+hands.tab <- describeBy(hand$Bacterial.Counts, group = hand$Method, mat = TRUE)
+ggplot(hand, aes(x=Method, y=Bacterial.Counts)) + 
+	geom_hline(yintercept = mean(hand$Bacterial.Counts), color = 'maroon', size = 2) +
+	geom_boxplot(outlier.alpha = 0, width = 0.5) +
+	geom_point(alpha = 0.5) + 
+	geom_point(data = hands.tab, aes(x = group1, y = mean), color = 'blue', size = 5) +
+	geom_errorbar(data = hands.tab, aes(x = group1, 
+										y = mean,
+										ymin = mean - abs(cv) * se,
+										ymax = mean + abs(cv) * se),
+				  color = 'darkgreen', size = 1, linetype = 1) +
+	geom_errorbar(data = hands.tab, aes(x = group1, 
+										y = mean,
+										ymin = mean - abs(bcv) * se,
+										ymax = mean + abs(bcv) * se),
+				  color = 'darkgreen', size = 1, linetype = 2) +
+	geom_rug()
+
+```
+
