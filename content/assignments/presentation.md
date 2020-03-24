@@ -20,6 +20,7 @@ The proposal can be more informal using bullet points. You must address the foll
 * Data Source: If you collected the data, state self-collected. If not, provide a citation/link.
 * Response: What is the response (dependent) variable, and what type is it (quantitative/qualitative)?
 * Explanatory: What is the explanatory (independent) variable(s), and what type is it (quantitative/qualitative)?
+* What statistical method do you plan to use? For example, t-test, ANOVA, regression, chi-squared.
 
 
 ## Example Data Sources
