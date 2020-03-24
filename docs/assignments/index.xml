@@ -33,7 +33,7 @@ Click here to download the lab files. Once downloaded, open the intro_to_r.Rmd f
 Lab 8 - Linear Regression Due February 24th
 You can start the lab by running the following command in RStudio:
 DATA606::startLab(&#39;Lab8&#39;)  Click here to submit lab 8.
-Lab 9 - Multiple Regression Due March 30rd</description>
+Lab 9 - Multiple Regression Due March 30th</description>
     </item>
     
     <item>
@@ -42,7 +42,7 @@ Lab 9 - Multiple Regression Due March 30rd</description>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>/assignments/presentation/</guid>
-      <description>TBD</description>
+      <description>The purpose of the data project is for you to conduct a reproducible analysis with a data set of your choosing. There are two components to the project, the proposal, which will be graded on a pass/fail basis, and the final report. The outline for each of these are provided in the templates. When submitting the assignments, include the R Markdown file (change the name to include your last name, for example Bryer-Proposal.</description>
     </item>
     
   </channel>
