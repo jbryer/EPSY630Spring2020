@@ -36,3 +36,14 @@ You can start the lab by running the following command in RStudio:
 DATA606::startLab('Lab9')
 ```
 
+[Click here to submit lab 9](https://docs.google.com/forms/d/e/1FAIpQLScDKgMqcnrLxJMQLN2Y4tI__VAqMHnXIEHdKLakT-zEVXGWCA/viewform?usp=sf_link)
+
+## Lab 7 - Inference for Numerical data
+
+**Due April 6th**
+
+```
+DATA606::startLab('Lab7')
+```
+
+[Click here to submit lab 7](https://docs.google.com/forms/d/e/1FAIpQLSdPRXZDgYrQG2S8qwejHv6j2k6O9luBmkruj7DfKUf5TencPg/viewform?usp=sf_link)
