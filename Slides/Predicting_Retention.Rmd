@@ -1,0 +1,272 @@
+---
+title: "Predicting Retention"
+author: "Jason Bryer, Ph.D."
+date: "March 30, 2020"
+output:
+  ioslides_presentation: 
+    smaller: yes
+    widescreen: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+<style>
+blockquote {
+  background: #f9f9f9;
+  border-left: 5px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 1.5em;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+library(DT)
+library(ggplot2)
+library(psych)
+```
+
+## Overview
+
+In higher education, being able to predict retention is important for multiple reasons including:
+
+* Provide support services for students "at-risk"
+* Used by some college rankings (e.g. [US News](https://www.usnews.com/best-colleges))
+
+Many colleges use admissions tests (e.g. ACT, SAT) to determine admission to the college. Our guiding research question is:
+
+**Does addmission tests predict college retention?**
+
+Retention is defined as:
+
+> A measure of the rate at which students persist in their educational program at an institution, expressed as a percentage. For four-year institutions, this is the percentage of first-time bachelors (or equivalent) degree-seeking undergraduates from the previous fall who are again enrolled in the current fall. For all other institutions this is the percentage of first-time degree/certificate-seeking students from the previous fall who either re-enrolled or successfully completed their program by the current fall. ([IPEDS, 2019](https://surveys.nces.ed.gov/ipeds/VisInstructions.aspx?survey=6&id=30074&show=all))
+
+## Data Source
+
+The [Integrated Postsecondary Education Data System (IPEDS)](https://nces.ed.gov/ipeds/) provides information about all higher education institutions that provide Federal Finacial Aid to students. 
+
+```{r, message=FALSE, echo=FALSE}
+library(ipeds)
+data(surveys)
+DT::datatable(surveys[,1:3], rownames = FALSE)
+```
+
+## Data Preparation
+
+The [`ipeds`](https://github.com/jbryer/ipeds) R package provides an interface to download IPEDS data directly into R.
+
+```{r message=FALSE, warning=FALSE, cache=TRUE}
+directory <- getIPEDSSurvey('HD', 2011)
+admissions <- getIPEDSSurvey("IC", 2011)
+retention <- getIPEDSSurvey("EFD", 2011)
+```
+
+We will subset the columns we are interested in and rename them.
+
+```{r}
+directory <- directory[,c('unitid', 'instnm', 'sector', 'control')]
+admissions <- admissions[,c('unitid', 'admcon1', 'admcon2', 'admcon7', 'applcnm', 
+						   'applcnw', 'applcn', 'admssnm', 'admssnw', 'admssn', 
+						   'enrlftm', 'enrlftw', 'enrlptm', 'enrlptw', 'enrlt', 
+						   'satnum', 'satpct', 'actnum', 'actpct', 'satvr25', 
+						   'satvr75', 'satmt25', 'satmt75', 'satwr25', 'satwr75', 
+						   'actcm25', 'actcm75', 'acten25', 'acten75', 'actmt25', 
+						   'actmt75', 'actwr25', 'actwr75')]
+retention <- retention[,c('unitid', 'ret_pcf', 'ret_pcp')]
+```
+
+## Data Preparation: Rename Columns
+
+```{r}
+names(admissions) <- c("unitid", "UseHSGPA", "UseHSRank", "UseAdmissionTestScores", 
+					  "ApplicantsMen", "ApplicantsWomen", "ApplicantsTotal", 
+					  "AdmissionsMen", "AdmissionsWomen", "AdmissionsTotal", 
+					  "EnrolledFullTimeMen", "EnrolledFullTimeWomen", 
+					  "EnrolledPartTimeMen", "EnrolledPartTimeWomen", 
+					  "EnrolledTotal", "NumSATScores", "PercentSATScores", 
+					  "NumACTScores", "PercentACTScores", "SATReading25", 
+					  "SATReading75", "SATMath25", "SATMath75", "SATWriting25", 
+					  "SATWriting75", "ACTComposite25", "ACTComposite75", 
+					  "ACTEnglish25", "ACTEnglish75", "ACTMath25", "ACTMath75", 
+					  "ACTWriting25", "ACTWriting75")
+names(retention) = c("unitid", "FullTimeRetentionRate", "PartTimeRetentionRate")
+
+```
+
+## Data Preparation: Recoding
+
+Recode the `openadmission` and `distanceEd` variables to factors and `enrollment` to an integer.
+
+```{r message=FALSE, warning=FALSE}
+admissionsLabels = c("Required", "Recommended", "Neither requiered nor recommended", 
+					 "Do not know", "Not reported", "Not applicable")
+admissions$UseHSGPA = factor(admissions$UseHSGPA, levels=c(1,2,3,4,-1,-2), 
+							labels=admissionsLabels)
+admissions$UseHSRank = factor(admissions$UseHSRank, levels=c(1,2,3,4,-1,-2), 
+							labels=admissionsLabels)
+admissions$UseAdmissionTestScores = factor(admissions$UseAdmissionTestScores, levels=c(1,2,3,4,-1,-2), 
+							labels=admissionsLabels)
+```
+
+
+## Data Preparation: Merging
+
+```{r}
+ret <- merge(directory, admissions, by="unitid")
+ret <- merge(ret, retention, by="unitid")
+#Use schools that require or recommend admission tests
+ret2 <- ret[ret$UseAdmissionTestScores %in% 
+		   	c('Required', 'Recommended', 'Neither requiered nor recommended'),] 
+#Remove schools with low retention rates. Are these errors in the data?
+ret2 <- ret2[-which(ret2$FullTimeRetentionRate < 20),] 
+```
+
+```{r}
+head(ret2, n = 3)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
+DT::datatable(ret2)
+```
+
+## Data Preparation: SAT and ACT Scores
+
+IPEDS only provides the 25th and 75th percentile in SAT and ACT scores. We will use the mean of these two values as a proxy for the mean.
+
+```{r, warning=FALSE, message=FALSE}
+ret2$SATMath75 <- as.numeric(ret2$SATMath75)
+ret2$SATMath25 <- as.numeric(ret2$SATMath25)
+ret2$SATMath <- (ret2$SATMath75 + ret2$SATMath25) / 2
+ret2$SATWriting75 <- as.numeric(ret2$SATWriting75)
+ret2$SATWriting25 <- as.numeric(ret2$SATWriting25)
+ret2$SATWriting <- (ret2$SATWriting75 + ret2$SATWriting25) / 2
+ret2$SATTotal <- ret2$SATMath + ret2$SATWriting
+ret2$NumSATScores <- as.integer(ret2$NumSATScores)
+```
+
+## Data Preparation: Selectivity
+
+Calculate the the selectivity of the institution by calculating the acceptance rate (i.e. # admissions / # applicants).
+
+```{r, warning=FALSE, message=FALSE}
+ret2$Selectivity <- as.numeric(ret2$AdmissionsTotal) / 
+				as.numeric(ret2$ApplicantsTotal)
+ret2$UseAdmissionTestScores <- as.factor(as.character(ret2$UseAdmissionTestScores))
+```
+
+## Descriptive Statistics: FullTimeRetentionRate
+
+```{r, message=FALSE, warning=FALSE, fig.width=8, fig.height=3.5, fig.align='center'}
+psych::describe(ret2$FullTimeRetentionRate)
+ggplot(ret2, aes(x = FullTimeRetentionRate)) + geom_histogram()
+```
+
+## Descriptive Statistics: SATMath
+
+```{r, message=FALSE, warning=FALSE, fig.width=8, fig.height=3.5, fig.align='center'}
+psych::describe(ret2$SATMath)
+ggplot(ret2, aes(x = SATMath)) + geom_histogram()
+```
+
+## Descriptive Statistics: SATWriting
+
+```{r, message=FALSE, warning=FALSE, fig.width=8, fig.height=3.5, fig.align='center'}
+psych::describe(ret2$SATWriting)
+ggplot(ret2, aes(x = SATWriting)) + geom_histogram()
+```
+
+## SAT Scores vs. Full-Time Retention
+
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+ggplot(ret2, aes(x=SATTotal, y=FullTimeRetentionRate, size=NumSATScores, 
+				 color=UseAdmissionTestScores)) + 
+	geom_point(alpha = 0.3) + 
+	geom_smooth(method='loess', alpha=0.1) +
+	xlab('Median SAT Score') + ylab('Full-Time Retention Rate') +
+	scale_size('Number of Scores Reported') +
+	scale_color_brewer('Use Admission Test Scores', palette = 2, type = 'qual')
+```
+
+# Regression Analysis
+
+## Regression Results
+
+```{r}
+lm.out <- lm(FullTimeRetentionRate ~ SATWriting + SATMath + 
+			 Selectivity + UseAdmissionTestScores, 
+			 data=ret2, 
+			 weights=ret2$NumSATScores)
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+options('width' = 120)
+lm.out.sum <- summary(lm.out)
+printCoefmat(lm.out.sum$coefficients)
+```
+
+Adjusted $R^2$ = `r round(lm.out.sum$adj.r.squared, digits = 2)`
+
+
+## Conclusion (Regression)
+
+SAT scores are a significant predictor of full-time retention rates for higher education institutions in the United States.
+
+SAT scores and selectivity account for approximately `r round(round(lm.out.sum$adj.r.squared * 100))`% of the variance of full-time retention.
+
+# Null Hypothesis Test
+
+## Descriptive Statistics: UseAdmissionTestScores
+
+```{r, message=FALSE, warning=FALSE, fig.width=8, fig.height=3.5, fig.align='center'}
+table(ret2$UseAdmissionTestScores)
+ggplot(ret2, aes(x = UseAdmissionTestScores)) + geom_bar()
+```
+
+
+## Null Hypothesis Test
+
+$H_0$: There is no difference in retention rate between institutions that require SAT scores and those that do not.
+
+$H_A$: There is a difference in the retention rate between institutions that require SAT scores and those that do not.
+
+We will exclude the "Recommended" group so that we have two groups.
+
+```{r}
+ret3 <- ret2[ret2$UseAdmissionTestScores != 'Recommended',]
+```
+
+## Student's t-test
+
+```{r}
+t.results <- t.test(FullTimeRetentionRate ~ UseAdmissionTestScores, data = ret3)
+print(t.results)
+```
+
+## Conclusion (Null Hypothesis test)
+
+There is sufficient evidence to reject the null hypothesis (*p* < 0.01). There is a difference in retention rates between schools that require SAT scores (`r round(t.results$estimate[2], digits=2)`) and those that do not (`r round(t.results$estimate[1], digits=2)`).
+
+We are 95% confident the true difference is between `r round(t.results$conf.int[1], digits = 2)` and `r round(t.results$conf.int[2], digits = 2)`.
+
+# ANOVA
+
+## Null Hypothesis for ANOVA
+
+$H_0$: The mean retention rate is the same whether an institution requires, recommends, and neither require nor recommend SAT scores.
+
+$H_A$: There is a difference in the mean retention scores between the three groups.
+
+## ANOVA
+
+```{r}
+anova.results <- aov(FullTimeRetentionRate ~ UseAdmissionTestScores, data = ret2)
+summary(anova.results)
+```
+
+### Conclusion (ANOVA)
+
+There is sufficient evidence to reject the null hypothesis (p < 0.01), there is a difference in the retention rate depending on the requirement of SAT scores.
+
+
+
