@@ -9,6 +9,12 @@ weight: 3
 
 The purpose of the data project is for you to conduct a reproducible analysis with a data set of your choosing. There are two components to the project, the proposal, which will be graded on a pass/fail basis, and the final presentation. Suggestions for possible data sources are included below, however you are free to use data not listed below. The only requirement is that you are allowed to share the data. 
 
+**Important Links:**
+
+* [Click here](https://docs.google.com/spreadsheets/d/1yVUUECFIduUIuIN_EMVjyocy1eoPo-hB6srfP1Cod1g/edit?usp=sharing) to sign-up for your presentation slot.
+* [Click here to submit your proposal](https://forms.gle/PwEtMrwfvCoCKPMq5)
+
+
 ## Project Proposal
 
 The proposal can be more informal using bullet points. You must address the following areas:
